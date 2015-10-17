@@ -1,28 +1,39 @@
 # PhpDatabaseAnalyzer
 
+Project is still in dev. 
 
-# The Idea
+## idea
 - simple
 - awesome
 - clean
 - fun
 
-
-# Facts
+## facts
 - written in PHP7
-- helpful for Database Architects and Performance Geeks
-- 
+- helpful for database architects
+- ready for performance geeks
 
-# Installation
+## supported databases
+- mySQL5
 
+## tests
+- Database Tests
+- Table Tests
+- Field Tests
 
+## output-Formats
+- XML
+- HTML
 
-# Changelog
+## code
+- PSR-0 Autoloader
+- PSR-1 Coding Standard
+- PSR-2 Codestyle
 
-# Future plan
+## installation
 
-# Credits
+## future plan
 
-# Licence
-
-- GNU
+## credits
+- Chrissi (https://github.com/ironchrissi)
+- Fred (https://github.com/fgluecks)

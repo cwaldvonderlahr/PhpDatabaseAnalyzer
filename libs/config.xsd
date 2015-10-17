@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="phpDatabaseAnalyzer">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="outputType" minOccurs="1" maxOccurs="1"></xsd:element>
+				<xsd:element name="databaseTestSuite" minOccurs="1" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="connection" minOccurs="1" maxOccurs="1">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="host" minOccurs="1" maxOccurs="1" />
+										<xsd:element name="port" minOccurs="1" maxOccurs="1" />
+										<xsd:element name="username" minOccurs="1" maxOccurs="1" />
+										<xsd:element name="password" minOccurs="1" maxOccurs="1" />
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="databaseEngine" type="xsd:string" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

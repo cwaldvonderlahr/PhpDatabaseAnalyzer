@@ -25,4 +25,4 @@
 
 # Licence
 
-GNU
+- GNU

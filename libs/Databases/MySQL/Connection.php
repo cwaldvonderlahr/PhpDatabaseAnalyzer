@@ -106,7 +106,7 @@ class Connection
     }
 
     /**
-     * @param field_type $host
+     * @param string $host
      */
     public function setHost($host)
     {
@@ -114,7 +114,7 @@ class Connection
     }
 
     /**
-     * @param field_type $username
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -122,7 +122,7 @@ class Connection
     }
 
     /**
-     * @param field_type $password
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -130,7 +130,7 @@ class Connection
     }
 
     /**
-     * @param field_type $database
+     * @param string $database
      */
     public function setDatabase($database)
     {
@@ -138,7 +138,7 @@ class Connection
     }
 
     /**
-     * @param field_type $port
+     * @param int $port
      */
     public function setPort($port)
     {
@@ -146,13 +146,17 @@ class Connection
     }
 
     /**
-     * @param field_type $charset
+     * @param string $charset
      */
     public function setCharset($charset)
     {
         $this->charset = $charset;
     }
     
+    /**
+     * @param string $query
+     * @return object
+     */
     public function query($query) {
         return $this->mysqli->query($query);
     }

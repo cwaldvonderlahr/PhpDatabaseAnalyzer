@@ -3,8 +3,9 @@ namespace Databases\Mysql;
 
 class Connection
 {
+
     protected $mysqli;
-    
+
     protected $host;
 
     protected $username;
@@ -18,10 +19,9 @@ class Connection
     protected $charset;
 
     public function __construct()
-    {
-    }
+    {}
 
-    public function set($host, $username, $password, $database, $port, $charset)
+    public function set($host, $username, $password, $database, $port = false, $charset = false)
     {
         $this->setHost($host);
         $this->setUsername($username);
@@ -35,13 +35,15 @@ class Connection
         if ($this->mysqli->connect_error) {
             throw new \Exception('Connection Error ' . $this->mysqli->connect_errno . ': ' . $this->mysqli->connect_error);
         }
-        if ($this->charset) {
+        if (isset($this->charset) and $this->charset !== false) {
             $this->mysqli->set_charset($this->charset);
         }
         
         return true;
     }
+
     /**
+     *
      * @return the $mysqli
      */
     public function getMysqli()
@@ -50,6 +52,7 @@ class Connection
     }
 
     /**
+     *
      * @return the $host
      */
     public function getHost()
@@ -58,6 +61,7 @@ class Connection
     }
 
     /**
+     *
      * @return the $username
      */
     public function getUsername()
@@ -66,6 +70,7 @@ class Connection
     }
 
     /**
+     *
      * @return the $password
      */
     public function getPassword()
@@ -74,6 +79,7 @@ class Connection
     }
 
     /**
+     *
      * @return the $database
      */
     public function getDatabase()
@@ -82,6 +88,7 @@ class Connection
     }
 
     /**
+     *
      * @return the $port
      */
     public function getPort()
@@ -90,6 +97,7 @@ class Connection
     }
 
     /**
+     *
      * @return the $charset
      */
     public function getCharset()
@@ -98,7 +106,8 @@ class Connection
     }
 
     /**
-     * @param \mysqli $mysqli
+     *
+     * @param \mysqli $mysqli            
      */
     public function setMysqli($mysqli)
     {
@@ -106,7 +115,8 @@ class Connection
     }
 
     /**
-     * @param string $host
+     *
+     * @param string $host            
      */
     public function setHost($host)
     {
@@ -114,7 +124,8 @@ class Connection
     }
 
     /**
-     * @param string $username
+     *
+     * @param string $username            
      */
     public function setUsername($username)
     {
@@ -122,7 +133,8 @@ class Connection
     }
 
     /**
-     * @param string $password
+     *
+     * @param string $password            
      */
     public function setPassword($password)
     {
@@ -130,7 +142,8 @@ class Connection
     }
 
     /**
-     * @param string $database
+     *
+     * @param string $database            
      */
     public function setDatabase($database)
     {
@@ -138,26 +151,36 @@ class Connection
     }
 
     /**
-     * @param int $port
+     *
+     * @param int $port            
      */
     public function setPort($port)
     {
+        if ($port === false) {
+            $port = (int) 3306;
+        }
+        
+        $port = (int) $port;
+    	
         $this->port = $port;
     }
 
     /**
-     * @param string $charset
+     *
+     * @param string $charset            
      */
     public function setCharset($charset)
     {
         $this->charset = $charset;
     }
-    
+
     /**
-     * @param string $query
+     *
+     * @param string $query            
      * @return object
      */
-    public function query($query) {
+    public function query($query)
+    {
         return $this->mysqli->query($query);
     }
 }

@@ -33,7 +33,7 @@ class Connection
     public function __construct()
     {}
 
-    public function set($host, $username, $password, $database, $port = false, $charset = false)
+    public function set($host, $username, $password, $database, $port = 0, $charset = "")
     {
         $this->setHost($host);
         $this->setUsername($username);
@@ -47,7 +47,7 @@ class Connection
         if ($this->mysqli->connect_error) {
             throw new \Exception('Connection Error ' . $this->mysqli->connect_errno . ': ' . $this->mysqli->connect_error);
         }
-        if (isset($this->charset) and $this->charset !== false) {
+        if (isset($this->charset) and !empty($this->charset)) {
             $this->mysqli->set_charset($this->charset);
         }
         
@@ -132,7 +132,11 @@ class Connection
      */
     public function setHost($host)
     {
-        $this->host = $host;
+        if (!isset($host) or empty($host)) {
+            throw new \Exception("Empty Host");
+        }
+        
+        $this->host = (string) $host;
     }
 
     /**
@@ -141,7 +145,11 @@ class Connection
      */
     public function setUsername($username)
     {
-        $this->username = $username;
+        if (!isset($username) or empty($username)) {
+            throw new \Exception("Empty Username");
+        }
+        
+        $this->username = (string) $username;
     }
 
     /**
@@ -150,7 +158,7 @@ class Connection
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = (string) $password;
     }
 
     /**
@@ -159,7 +167,11 @@ class Connection
      */
     public function setDatabase($database)
     {
-        $this->database = $database;
+        if (!isset($database) or empty($database)) {
+            throw new \Exception("Empty Database");
+        }
+        
+        $this->database = (string) $database;
     }
 
     /**
@@ -168,13 +180,11 @@ class Connection
      */
     public function setPort($port)
     {
-        if ($port === false) {
+        if (!isset($port) or empty($port) or $port === 0) {
             $port = (int) 3306;
         }
         
-        $port = (int) $port;
-    	
-        $this->port = $port;
+        $this->port = (int) $port;
     }
 
     /**
@@ -183,7 +193,11 @@ class Connection
      */
     public function setCharset($charset)
     {
-        $this->charset = $charset;
+        if (!isset($charset) or empty($charset)) {
+            $charset = "";
+        }
+        
+        $this->charset = (string) $charset;
     }
 
     /**

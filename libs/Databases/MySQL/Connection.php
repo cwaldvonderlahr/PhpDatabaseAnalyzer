@@ -29,6 +29,8 @@ class Connection
     protected $port;
 
     protected $charset;
+    
+    private static $instance;
 
     public function __construct()
     {}
@@ -50,6 +52,8 @@ class Connection
         if (isset($this->charset) and !empty($this->charset)) {
             $this->mysqli->set_charset($this->charset);
         }
+        
+        self::$instance = $this;
         
         return true;
     }
@@ -208,5 +212,18 @@ class Connection
     public function query($query)
     {
         return $this->mysqli->query($query);
+    }
+    
+    /**
+     * @return \Databases\Mysql\Connection
+     */
+    public static function getInstance()
+    {
+        if (!isset(self::$instance))
+        {
+            self::$instance = new Connection();
+        }
+    
+        return self::$instance;
     }
 }

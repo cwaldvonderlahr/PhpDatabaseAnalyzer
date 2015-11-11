@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpDatabaseAnalyzer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../libs/config.xsd">
+	<databaseTestSuite databaseEngine="MySQL">
+		<connection>
+			<host>localhost</host>
+			<port>3306</port>
+			<username>root</username>
+			<password></password>
+		</connection>
+	</databaseTestSuite>
+</phpDatabaseAnalyzer>

@@ -32,6 +32,9 @@ Project is still in dev.
 
 ## installation
 
+###Composer
+- first dump the composer autoloader
+
 ## future plan
 
 ## credits

@@ -10,11 +10,13 @@
  * @link      https://github.com/ironchrissi/PhpDatabaseAnalyzer
  * @version   0.1
  **/
-
 namespace Output;
 
 class Html
 {
+
     public function __construct()
-    {}
+    {
+        /* do something */
+    }
 }

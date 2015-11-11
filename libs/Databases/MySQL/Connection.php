@@ -10,7 +10,6 @@
  * @link      https://github.com/ironchrissi/PhpDatabaseAnalyzer
  * @version   0.1
  **/
-
 namespace Databases\Mysql;
 
 class Connection
@@ -29,11 +28,13 @@ class Connection
     protected $port;
 
     protected $charset;
-    
+
     private static $instance;
 
     public function __construct()
-    {}
+    {
+        /* do something */
+    }
 
     public function set($host, $username, $password, $database, $port = 0, $charset = "")
     {
@@ -43,18 +44,18 @@ class Connection
         $this->setDatabase($database);
         $this->setPort($port);
         $this->setCharset($charset);
-        
+
         $this->mysqli = new \mysqli($this->host, $this->username, $this->password, $this->database, $this->port);
-        
+
         if ($this->mysqli->connect_error) {
             throw new \Exception('Connection Error ' . $this->mysqli->connect_errno . ': ' . $this->mysqli->connect_error);
         }
-        if (isset($this->charset) and !empty($this->charset)) {
+        if (isset($this->charset) and ! empty($this->charset)) {
             $this->mysqli->set_charset($this->charset);
         }
-        
+
         self::$instance = $this;
-        
+
         return true;
     }
 
@@ -123,7 +124,7 @@ class Connection
 
     /**
      *
-     * @param \mysqli $mysqli            
+     * @param \mysqli $mysqli
      */
     public function setMysqli($mysqli)
     {
@@ -132,33 +133,33 @@ class Connection
 
     /**
      *
-     * @param string $host            
+     * @param string $host
      */
     public function setHost($host)
     {
-        if (!isset($host) or empty($host)) {
+        if (! isset($host) or empty($host)) {
             throw new \Exception("Empty Host");
         }
-        
+
         $this->host = (string) $host;
     }
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
-        if (!isset($username) or empty($username)) {
+        if (! isset($username) or empty($username)) {
             throw new \Exception("Empty Username");
         }
-        
+
         $this->username = (string) $username;
     }
 
     /**
      *
-     * @param string $password            
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -167,63 +168,63 @@ class Connection
 
     /**
      *
-     * @param string $database            
+     * @param string $database
      */
     public function setDatabase($database)
     {
-        if (!isset($database) or empty($database)) {
+        if (! isset($database) or empty($database)) {
             throw new \Exception("Empty Database");
         }
-        
+
         $this->database = (string) $database;
     }
 
     /**
      *
-     * @param int $port            
+     * @param int $port
      */
     public function setPort($port)
     {
-        if (!isset($port) or empty($port) or $port === 0) {
+        if (! isset($port) or empty($port) or $port === 0) {
             $port = (int) 3306;
         }
-        
+
         $this->port = (int) $port;
     }
 
     /**
      *
-     * @param string $charset            
+     * @param string $charset
      */
     public function setCharset($charset)
     {
-        if (!isset($charset) or empty($charset)) {
+        if (! isset($charset) or empty($charset)) {
             $charset = "";
         }
-        
+
         $this->charset = (string) $charset;
     }
 
     /**
      *
-     * @param string $query            
+     * @param string $query
      * @return object
      */
     public function query($query)
     {
         return $this->mysqli->query($query);
     }
-    
+
     /**
+     *
      * @return \Databases\Mysql\Connection
      */
     public static function getInstance()
     {
-        if (!isset(self::$instance))
-        {
+        if (! isset(self::$instance)) {
             self::$instance = new Connection();
         }
-    
+
         return self::$instance;
     }
 }

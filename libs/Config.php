@@ -24,19 +24,19 @@ class Config implements ConfigInterface
 
     /**
      *
-     * @param string $configFileName
+     * @param string $configFile
      */
-    public function __construct($configFileName)
+    public function __construct($configFile)
     {
-        $this->loadConfig($configFileName);
+        $this->loadConfig($configFile);
     }
 
-    private function loadConfig($configFileName)
+    private function loadConfig($configFile)
     {
-        if (! is_file($configFileName)) {
+        if (! is_file($configFile)) {
             throw new \InvalidArgumentException("Config file does not exists", E_ERROR);
         } else {
-            $this->xmlConfigObject = simplexml_load_file($configFileName);
+            $this->xmlConfigObject = simplexml_load_file($configFile);
 
             if (! is_object($this->xmlConfigObject) or $this->xmlConfigObject->getName() != 'phpDatabaseAnalyzer') {
                 throw new \InvalidArgumentException("Invalid config file", E_ERROR);
@@ -99,7 +99,7 @@ class Config implements ConfigInterface
                 'host' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->host->__toString(),
                 'port' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->port->__toString(),
                 'username' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->username->__toString(),
-                'password' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->password->__toString(),
+                'password' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->password->__toString()
             );
             return $connectionParameter;
         }

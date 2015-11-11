@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpDatabaseAnalyzer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../libs/config.xsd">
-	<outputType></outputType>
+	<outputType>XML</outputType>
 	<databaseTestSuite databaseEngine="MySQL">
 		<connection>
 			<host>localhost</host>

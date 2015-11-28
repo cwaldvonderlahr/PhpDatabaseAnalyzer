@@ -6,9 +6,17 @@ class Logger implements LoggerInterface
 
     private $loggingMode;
 
+    private $log = array();
+
+    private $scoreMultiplicator = array(
+        'notice' => 1,
+        'warning' => 5,
+        'critical' => 10
+    );
+
     public function __construct($loggingMode)
     {
-        if ($loggingMode == 'issuses') {
+        if ($loggingMode == 'issues') {
             $this->loggingMode = $loggingMode;
         } else {
             $this->loggingMode = "full";
@@ -17,42 +25,63 @@ class Logger implements LoggerInterface
 
     public function setInfo($text)
     {
-        /* do something */
+        if ($this->loggingMode == 'full' and is_string($text) and ! empty($text)) {
+            $this->log[] = array(
+                'logType' => 'info',
+                'timestamp' => date("U"),
+                'text' => $text
+            );
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function setIssus($type, $text, $scorePoints)
+    public function setIssue($type, $text, $scorePoints)
     {
-        /* do something */
+        if (! empty($text) and preg_match("(notice|warning|critical)", $type) and $scorePoints > 0) {
+            $this->log[] = array(
+                'logType' => 'issue',
+                'timestamp' => date("U"),
+                'issueType' => $type,
+                'text' => $text,
+                'scorePoints' => $scorePoints
+            );
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getLog()
     {
-        $log = array();
-
-        $log[] = array(
-            'timesstamp' => "",
-            "text" => ""
-        );
-
-        return $log;
+        return $this->log;
     }
 
-    public function getIssuses()
+    public function getIssues()
     {
-        $issuses = array();
-
-        $issuses[] = array(
-            'timestamp' => "",
-            'type' => '',
-            'text' => '',
-            'scorePoints' => 0
-        );
-
-        return $issuses;
+        $issues = array();
+        
+        foreach ($this->log as $logEntry) {
+            if ($logEntry['logType'] == 'issue') {
+                unset($logEntry['logType']);
+                $issues[] = $logEntry;
+            }
+        }
+        
+        return $issues;
     }
 
     public function getQualityScore()
     {
-        return 0;
+        $qualityScore = 0;
+        
+        foreach ($this->log as $logEntry) {
+            if ($logEntry['logType'] == 'issue') {
+                $qualityScore += $this->scoreMultiplicator[$logEntry['issueType']] * $logEntry['scorePoints'];
+            }
+        }
+        
+        return $qualityScore;
     }
 }

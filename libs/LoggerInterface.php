@@ -8,11 +8,11 @@ interface LoggerInterface
 
     public function setInfo($text);
 
-    public function setIssus($type, $text, $scorePoints);
+    public function setIssue($type, $text, $scorePoints);
 
     public function getLog();
 
-    public function getIssuses();
+    public function getIssues();
 
     public function getQualityScore();
 }

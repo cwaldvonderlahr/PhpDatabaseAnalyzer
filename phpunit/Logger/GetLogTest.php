@@ -19,7 +19,7 @@ class GetLogTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-
+        
         $loggingMode = "full";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
     }
@@ -30,7 +30,7 @@ class GetLogTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Logger = null;
-
+        
         parent::tearDown();
     }
 
@@ -38,11 +38,51 @@ class GetLogTest extends \PHPUnit_Framework_TestCase
      * Tests Logger->getLog()
      * @test
      */
-    public function getLog()
+    public function getLogEmptyLog()
     {
-        /* @todo complete PHPUnit Test */
-        $this->markTestIncomplete("Construct test not implemented");
+        $log = $this->Logger->getLog();
+        
+        $this->assertTrue(is_array($log));
+        $this->assertEquals(0, count($log));
+    }
 
-        $this->Logger->getLog(/* parameters */);
+    /**
+     * Tests Logger->getLog()
+     * @test
+     */
+    public function getLogCheckStructure()
+    {
+        $this->Logger->setInfo('Start');
+        $this->Logger->setInfo('Database');
+        $this->Logger->setIssue('notice', 'test', 1);
+        $this->Logger->setInfo('End');
+        
+        $log = $this->Logger->getLog();
+        
+        $this->assertTrue(is_array($log));
+        $this->assertEquals(4, count($log));
+        
+        foreach ($log as $logKey => $logEntry) {
+            $this->assertTrue(is_int($logKey));
+            
+            $this->assertTrue(is_array($logEntry));
+            
+            if ($logKey == 2) {
+                $this->assertEquals(5, count($logEntry));
+                $this->assertEquals('issue', $logEntry['logType']);
+                
+                $this->assertEquals(1, $logEntry['scorePoints']);
+                $this->assertEquals('notice', $logEntry['issueType']);
+            } else {
+                $this->assertEquals(3, count($logEntry));
+                $this->assertEquals('info', $logEntry['logType']);
+            }
+            
+            
+            $this->assertNotFalse(date("Y-m-d", $logEntry['timestamp']));
+            
+            $this->assertNotEmpty($logEntry['text']);
+            $this->assertTrue(is_string($logEntry['text']));
+        }
     }
 }

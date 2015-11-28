@@ -19,9 +19,6 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-
-        $loggingMode = "full";
-        $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
     }
 
     /**
@@ -30,7 +27,7 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Logger = null;
-
+        
         parent::tearDown();
     }
 
@@ -38,11 +35,69 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
      * Tests Logger->setInfo()
      * @test
      */
-    public function setInfo()
+    public function setInfoWithFullLogging()
     {
-        /* @todo complete PHPUnit Test */
-        $this->markTestIncomplete("Construct test not implemented");
+        $loggingMode = "full";
+        $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
+        
+        $text = "Hello World";
+        $this->assertTrue($this->Logger->setInfo($text));
+        
+        $log = $this->Logger->getLog();
+        
+        $this->assertEquals(1, count($log));
+        
+        $this->assertEquals($text, $log[0]['text']);
+    }
 
-        $this->Logger->setInfo(/* parameters */);
+    /**
+     * Tests Logger->setInfo()
+     * @test
+     */
+    public function setInfoWithIssueLogging()
+    {
+        $loggingMode = "issues";
+        $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
+        
+        $text = "Hello World";
+        $this->assertFalse($this->Logger->setInfo($text));
+        
+        $log = $this->Logger->getLog();
+        
+        $this->assertEquals(0, count($log));
+    }
+
+    /**
+     * Tests Logger->setInfo()
+     * @test
+     */
+    public function setInfoWithEmptyText()
+    {
+        $loggingMode = "full";
+        $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
+        
+        $text = "";
+        $this->assertFalse($this->Logger->setInfo($text));
+        
+        $log = $this->Logger->getLog();
+        
+        $this->assertEquals(0, count($log));
+    }
+
+    /**
+     * Tests Logger->setInfo()
+     * @test
+     */
+    public function setInfoWithNoneStringText()
+    {
+        $loggingMode = "full";
+        $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
+        
+        $text = array();
+        $this->assertFalse($this->Logger->setInfo($text));
+        
+        $log = $this->Logger->getLog();
+        
+        $this->assertEquals(0, count($log));
     }
 }

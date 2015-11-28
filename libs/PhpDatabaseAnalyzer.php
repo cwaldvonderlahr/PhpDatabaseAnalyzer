@@ -19,6 +19,10 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
 
     public function __construct($configFile)
     {
+        if (! file_exists($configFile)) {
+            $configFile = dirname(__FILE__) . "/../config/config.xml";
+        }
+        
         $this->Config = new Config($configFile);
     }
 
@@ -27,14 +31,23 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
         $this->runDatabaseTestSuites();
     }
 
-    protected function runDatabaseTestSuites()
+    private function runDatabaseTestSuites()
     {
         $databaseTestSuiteLists = $this->Config->getDatabaseTestSuiteAsList();
-
+        
+        $Logger = new Logger($this->Config->getLoggingMode());
+        
         foreach ($databaseTestSuiteLists as $databaseTestSuiteId) {
             $connectionData = $this->Config->getConnectionParametersOfDatabaseTestSuite($databaseTestSuiteId);
-
+            
             var_dump($connectionData);
         }
+        
+        $this->createOutput($Logger);
+    }
+
+    private function createOutput($Logger)
+    {
+        /* create output */
     }
 }

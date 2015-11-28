@@ -15,7 +15,7 @@ namespace PhpDatabaseAnalyzer;
 /**
  *
  * @author fgluecks
- *
+ *        
  */
 class Config implements ConfigInterface
 {
@@ -24,7 +24,7 @@ class Config implements ConfigInterface
 
     /**
      *
-     * @param string $configFile
+     * @param string $configFile            
      */
     public function __construct($configFile)
     {
@@ -37,7 +37,7 @@ class Config implements ConfigInterface
             throw new \InvalidArgumentException("Config file does not exists", E_ERROR);
         } else {
             $this->xmlConfigObject = simplexml_load_file($configFile);
-
+            
             if (! is_object($this->xmlConfigObject) or $this->xmlConfigObject->getName() != 'phpDatabaseAnalyzer') {
                 throw new \InvalidArgumentException("Invalid config file", E_ERROR);
             } else {
@@ -65,6 +65,21 @@ class Config implements ConfigInterface
      *
      * {@inheritDoc}
      *
+     * @see \PhpDatabaseAnalyzer\ConfigInterface::getLoggingMode()
+     */
+    public function getLoggingMode()
+    {
+        if (! isset($this->xmlConfigObject->loggingMode)) {
+            throw new \RuntimeException("loggingMode does not exist in XML config", E_ERROR);
+        } else {
+            return $this->xmlConfigObject->loggingMode->__toString();
+        }
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
      * @see \PhpDatabaseAnalyzer\ConfigInterface::getDatabaseTestSuiteAsList()
      */
     public function getDatabaseTestSuiteAsList()
@@ -74,7 +89,7 @@ class Config implements ConfigInterface
         } else {
             $databaseTestSuiteList = array();
             $positionKey = 0;
-
+            
             foreach ($this->xmlConfigObject->databaseTestSuite as $databaseTestSuite) {
                 $databaseTestSuiteList[] = $positionKey;
                 $positionKey ++;

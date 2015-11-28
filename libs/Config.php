@@ -37,7 +37,7 @@ class Config implements ConfigInterface
             throw new \InvalidArgumentException("Config file does not exists", E_ERROR);
         } else {
             $this->xmlConfigObject = simplexml_load_file($configFile);
-
+            
             if (! is_object($this->xmlConfigObject) or $this->xmlConfigObject->getName() != 'phpDatabaseAnalyzer') {
                 throw new \InvalidArgumentException("Invalid config file", E_ERROR);
             } else {
@@ -74,7 +74,7 @@ class Config implements ConfigInterface
         } else {
             $databaseTestSuiteList = array();
             $positionKey = 0;
-
+            
             foreach ($this->xmlConfigObject->databaseTestSuite as $databaseTestSuite) {
                 $databaseTestSuiteList[] = $positionKey;
                 $positionKey ++;

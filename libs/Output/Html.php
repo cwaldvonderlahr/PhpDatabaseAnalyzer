@@ -10,7 +10,7 @@
  * @link      https://github.com/ironchrissi/PhpDatabaseAnalyzer
  * @version   0.1
  **/
-namespace Output;
+namespace PhpDatabaseAnalyzer\Output;
 
 class Html
 {

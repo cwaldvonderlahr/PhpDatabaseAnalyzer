@@ -10,7 +10,7 @@
  * @link      https://github.com/ironchrissi/PhpDatabaseAnalyzer
  * @version   0.1
  **/
-namespace Databases\Mysql;
+namespace PhpDatabaseAnalyzer\Databases\Mysql;
 
 class Connection
 {
@@ -44,18 +44,18 @@ class Connection
         $this->setDatabase($database);
         $this->setPort($port);
         $this->setCharset($charset);
-
+        
         $this->mysqli = new \mysqli($this->host, $this->username, $this->password, $this->database, $this->port);
-
+        
         if ($this->mysqli->connect_error) {
             throw new \Exception('Connection Error ' . $this->mysqli->connect_errno . ': ' . $this->mysqli->connect_error);
         }
         if (isset($this->charset) and ! empty($this->charset)) {
             $this->mysqli->set_charset($this->charset);
         }
-
+        
         self::$instance = $this;
-
+        
         return true;
     }
 
@@ -140,7 +140,7 @@ class Connection
         if (! isset($host) or empty($host)) {
             throw new \Exception("Empty Host");
         }
-
+        
         $this->host = (string) $host;
     }
 
@@ -153,7 +153,7 @@ class Connection
         if (! isset($username) or empty($username)) {
             throw new \Exception("Empty Username");
         }
-
+        
         $this->username = (string) $username;
     }
 
@@ -175,7 +175,7 @@ class Connection
         if (! isset($database) or empty($database)) {
             throw new \Exception("Empty Database");
         }
-
+        
         $this->database = (string) $database;
     }
 
@@ -188,7 +188,7 @@ class Connection
         if (! isset($port) or empty($port) or $port === 0) {
             $port = (int) 3306;
         }
-
+        
         $this->port = (int) $port;
     }
 
@@ -201,7 +201,7 @@ class Connection
         if (! isset($charset) or empty($charset)) {
             $charset = "";
         }
-
+        
         $this->charset = (string) $charset;
     }
 
@@ -217,14 +217,14 @@ class Connection
 
     /**
      *
-     * @return \Databases\Mysql\Connection
+     * @return \PhpDatabaseAnalyzer\Databases\Mysql\Connection
      */
     public static function getInstance()
     {
         if (! isset(self::$instance)) {
             self::$instance = new Connection();
         }
-
+        
         return self::$instance;
     }
 }

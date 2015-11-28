@@ -1,5 +1,5 @@
 <?php
-namespace PHPUnit\PHPDatabaseAnalyzer\Logger;
+namespace PHPUnit\PhpDatabaseAnalyzer\Logger;
 
 /**
  * Check test case.
@@ -21,7 +21,7 @@ class ConstructTest extends \PHPUnit_Framework_TestCase
         parent::setUp();
 
         $loggingMode = "full";
-        $this->Logger = new \PHPDatabaseAnalyzer\Logger($loggingMode);
+        $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
     }
 
     /**
@@ -43,6 +43,6 @@ class ConstructTest extends \PHPUnit_Framework_TestCase
         /* @todo complete PHPUnit Test */
         $this->markTestIncomplete("Construct test not implemented");
 
-        $this->Logger->cconstruct(/* parameters */);
+//         $this->Logger->construct(/* parameters */);
     }
 }

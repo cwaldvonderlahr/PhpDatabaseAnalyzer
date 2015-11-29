@@ -12,7 +12,8 @@
  **/
 namespace PhpDatabaseAnalyzer\Databases\Mysql;
 
-class Connection implements DatabaseConnnectionInterface
+/* class Connection implements \PhpDatabaseAnalyzer\DatabaseConnnectionInterface */
+class Connection
 {
 
     protected $mysqli;
@@ -214,6 +215,52 @@ class Connection implements DatabaseConnnectionInterface
     {
         return $this->mysqli->query($query);
     }
+    
+    /**
+     *
+     * @param string $query
+     * @param string $arrayType (assoc or num)
+     * @return array
+     */
+    public function getArray($query, $arrayType = 'num')
+    {
+        $result = $this->query($query);
+        
+        $returnArray = array();
+        
+        $fetchArrayType = MYSQLI_NUM;
+        if ($arrayType == "assoc") {
+            $fetchArrayType = MYSQLI_ASSOC;
+        }
+        
+        $returnArray = $result->fetch_all($fetchArrayType);
+        
+        $result->free();
+        unset($result, $query);
+        
+        return $returnArray;
+    }
+    
+    /**
+     *
+     * @param string $query
+     * @return array
+     */
+    public function getRow($query)
+    {
+        $result = $this->query($query);
+        
+        $return = array();
+        
+        $return = $result->fetch_row();
+        
+        $result->free();
+        
+        unset($result, $query);
+        
+        return $return;
+    }
+    
 
     /**
      *

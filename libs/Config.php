@@ -15,7 +15,7 @@ namespace PhpDatabaseAnalyzer;
 /**
  *
  * @author fgluecks
- *        
+ *
  */
 class Config implements ConfigInterface
 {
@@ -24,7 +24,7 @@ class Config implements ConfigInterface
 
     /**
      *
-     * @param string $configFile            
+     * @param string $configFile
      */
     public function __construct($configFile)
     {

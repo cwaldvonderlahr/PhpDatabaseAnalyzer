@@ -22,7 +22,7 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
         if (! file_exists($configFile)) {
             $configFile = dirname(__FILE__) . "/../config/config.xml";
         }
-        
+
         $this->Config = new Config($configFile);
     }
 
@@ -34,20 +34,28 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
     private function runDatabaseTestSuites()
     {
         $databaseTestSuiteLists = $this->Config->getDatabaseTestSuiteAsList();
-        
+
         $Logger = new Logger($this->Config->getLoggingMode());
-        
+
         foreach ($databaseTestSuiteLists as $databaseTestSuiteId) {
             $connectionData = $this->Config->getConnectionParametersOfDatabaseTestSuite($databaseTestSuiteId);
-            
-            var_dump($connectionData);
+
+            $Logger->setInfo('Hallo Welt');
+            $Logger->setInfo('Ende');
         }
-        
+
         $this->createOutput($Logger);
     }
 
     private function createOutput($Logger)
     {
-        /* create output */
+        $outputClass = '\PhpDatabaseAnalyzer\Output\\' . $this->Config->getOutputType();
+
+        if (! class_exists($outputClass)) {
+            throw new \RuntimeException("Output class does not exists", E_ERROR);
+        } else {
+            $Output = new $outputClass();
+            $Output->create($Logger);
+        }
     }
 }

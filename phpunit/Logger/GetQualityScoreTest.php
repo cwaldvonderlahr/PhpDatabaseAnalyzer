@@ -19,7 +19,7 @@ class GetQualityScoreTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        
+
         $loggingMode = "issues";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
     }
@@ -30,7 +30,7 @@ class GetQualityScoreTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Logger = null;
-        
+
         parent::tearDown();
     }
 
@@ -42,7 +42,7 @@ class GetQualityScoreTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(0, $this->Logger->getQualityScore());
     }
-    
+
     /**
      * Tests Logger->getQualityScore()
      * @test
@@ -52,14 +52,14 @@ class GetQualityScoreTest extends \PHPUnit_Framework_TestCase
         $this->Logger->setIssue('notice', 'test', 1);
         $this->Logger->setIssue('notice', 'test', 1);
         $this->Logger->setIssue('notice', 'test', 1);
-        
+
         $this->Logger->setIssue('warning', 'test', 3);
         $this->Logger->setIssue('warning', 'test', 3);
-        
+
         $this->Logger->setIssue('critical', 'test', 2);
         $this->Logger->setIssue('critical', 'test', 5);
         $this->Logger->setIssue('critical', 'test', 9);
-        
+
         $this->assertEquals(193, $this->Logger->getQualityScore());
-    }    
+    }
 }

@@ -8,7 +8,7 @@
 			<port>3306</port>
 			<username>root</username>
 			<password></password>
-			<database>test</database>
+			<database>Test</database>
 		</connection>
 	</databaseTestSuite>
 </phpDatabaseAnalyzer>

@@ -15,6 +15,7 @@
 										<xsd:element name="port" minOccurs="1" maxOccurs="1" />
 										<xsd:element name="username" minOccurs="1" maxOccurs="1" />
 										<xsd:element name="password" minOccurs="1" maxOccurs="1" />
+										<xsd:element name="database" minOccurs="1" maxOccurs="1" />
 									</xsd:sequence>
 								</xsd:complexType>
 							</xsd:element>

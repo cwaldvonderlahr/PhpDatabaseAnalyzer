@@ -7,6 +7,7 @@
 			<port>3306</port>
 			<username>root</username>
 			<password>9sasjka7a</password>
+			<database>testDB1</database>
 		</connection>
 	</databaseTestSuite>
 	<databaseTestSuite databaseEngine="MySQL">
@@ -15,6 +16,7 @@
 			<port>3306</port>
 			<username>admin</username>
 			<password>2kkwsk27</password>
+			<database>testDB2</database>
 		</connection>
 	</databaseTestSuite>
 </phpDatabaseAnalyzer>

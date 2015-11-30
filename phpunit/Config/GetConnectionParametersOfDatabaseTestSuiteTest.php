@@ -41,7 +41,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
         $databaseTestSuite = $this->Config->getConnectionParametersOfDatabaseTestSuite(0);
 
         $this->assertTrue(is_array($databaseTestSuite));
-        $this->assertEquals(5, count($databaseTestSuite));
+        $this->assertEquals(6, count($databaseTestSuite));
 
         $this->assertArrayHasKey("engine", $databaseTestSuite);
         $this->assertEquals("MySQL", $databaseTestSuite['engine']);
@@ -57,6 +57,9 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
 
         $this->assertArrayHasKey("password", $databaseTestSuite);
         $this->assertEquals("asdaddfaf", $databaseTestSuite['password']);
+
+        $this->assertArrayHasKey("database", $databaseTestSuite);
+        $this->assertEquals("testDB", $databaseTestSuite['database']);
     }
 
     /**
@@ -69,7 +72,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
         $databaseTestSuite = $this->Config->getConnectionParametersOfDatabaseTestSuite(1);
 
         $this->assertTrue(is_array($databaseTestSuite));
-        $this->assertEquals(5, count($databaseTestSuite));
+        $this->assertEquals(6, count($databaseTestSuite));
 
         $this->assertArrayHasKey("engine", $databaseTestSuite);
         $this->assertEquals("MySQL", $databaseTestSuite['engine']);
@@ -85,6 +88,9 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
 
         $this->assertArrayHasKey("password", $databaseTestSuite);
         $this->assertEquals("2kkwsk27", $databaseTestSuite['password']);
+
+        $this->assertArrayHasKey("database", $databaseTestSuite);
+        $this->assertEquals("testDB2", $databaseTestSuite['database']);
     }
 
     /**

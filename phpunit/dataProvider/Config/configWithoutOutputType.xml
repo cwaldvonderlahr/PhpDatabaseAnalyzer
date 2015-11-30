@@ -6,6 +6,7 @@
 			<port>3306</port>
 			<username>root</username>
 			<password></password>
+			<database>testDB</database>
 		</connection>
 	</databaseTestSuite>
 </phpDatabaseAnalyzer>

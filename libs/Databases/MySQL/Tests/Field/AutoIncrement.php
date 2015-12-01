@@ -120,7 +120,7 @@ class AutoIncrement
                 } elseif ($percentOfAutoIncrementStatus > 10) {
                     $this->Logger->setIssue("notice", $percentOfAutoIncrementStatus . "% of AutoIncrement reached", 1);
                 } else {
-                	$this->Logger->setInfo("No Issue found");
+                    $this->Logger->setInfo("No Issue found");
                 }
             }
         }

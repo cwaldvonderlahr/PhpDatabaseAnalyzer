@@ -47,10 +47,51 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
             } else {
                 $ConnectionObject = new $connectionClass();
                 $ConnectionObject->set($connectionData['host'], $connectionData['username'], $connectionData['password'], $connectionData['database'], $connectionData['port']);
+
+                $testList = $this->getAllTestsOfDatabaseEngine($connectionData['engine']);
+
+                foreach ($testList as $testCLass) {
+                    if (class_exists($testCLass)) {
+                        $testClass = new $testCLass($ConnectionObject, $Logger);
+                        $testClass->runTest();
+                        unset($testCLass);
+                    }
+                }
             }
         }
 
         $this->createOutput($Logger);
+    }
+
+    private function getAllTestsOfDatabaseEngine($databaseEngine)
+    {
+        $tests = array();
+
+        $testsCases = array(
+            'Database',
+            'Field',
+            'Table'
+        );
+
+        $classPrefix = '\PhpDatabaseAnalyzer\Databases\\' . $databaseEngine . '\Tests\\';
+
+        foreach ($testsCases as $testCases) {
+            $dir = dirname(__FILE__) . "/Databases/" . $databaseEngine . "/Tests/" . $testCases . "/";
+
+            $handle = opendir($dir);
+            if ($handle) {
+                while (false !== ($entry = readdir($handle))) {
+                    if ($entry != "." && $entry != "..") {
+                        if (substr($entry, - 4) == '.php') {
+                            $tests[] = $classPrefix . $testCases . '\\' . substr($entry, 0, - 4);
+                        }
+                    }
+                }
+                closedir($handle);
+            }
+        }
+
+        return $tests;
     }
 
     private function createOutput($Logger)

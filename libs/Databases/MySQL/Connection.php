@@ -12,8 +12,7 @@
  **/
 namespace PhpDatabaseAnalyzer\Databases\Mysql;
 
-/* class Connection implements \PhpDatabaseAnalyzer\DatabaseConnnectionInterface */
-class Connection
+class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 {
 
     protected $mysqli;

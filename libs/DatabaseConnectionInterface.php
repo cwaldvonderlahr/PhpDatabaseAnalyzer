@@ -1,38 +1,42 @@
 <?php
 namespace PhpDatabaseAnalyzer;
 
-interface DatabaseConnnectionInterface
+interface DatabaseConnectionInterface
 {
 
     public function __construct();
-
+	
     public function set($host, $username, $password, $database, $port, $charset);
-
+	
     public function getHost();
-
+	
     public function getUsername();
-
+	
     public function getPassword();
-
+	
     public function getDatabase();
     
     public function getPort();
     
     public function getCharset();
     
-    public function setHost();
+    public function setHost($host);
     
-    public function setUsername();
+    public function setUsername($username);
     
-    public function setPassword();
+    public function setPassword($password);
     
-    public function setDatabase();
+    public function setDatabase($database);
     
-    public function setPort();
+    public function setPort($port);
     
-    public function setCharset();
+    public function setCharset($charset);
     
-    public function query();
+    public function query($query);
+    
+    public function getArray($query);
+    
+    public function getRow($query);
     
     public static function getInstance();
 }

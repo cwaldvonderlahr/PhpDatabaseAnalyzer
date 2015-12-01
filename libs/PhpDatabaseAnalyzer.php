@@ -40,8 +40,14 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
         foreach ($databaseTestSuiteLists as $databaseTestSuiteId) {
             $connectionData = $this->Config->getConnectionParametersOfDatabaseTestSuite($databaseTestSuiteId);
 
-            $Logger->setInfo('Hallo Welt');
-            $Logger->setInfo('Ende');
+            $connectionClass = '\PhpDatabaseAnalyzer\Databases\\' . $connectionData['engine'] . '\Connection';
+
+            if (! class_exists($connectionClass)) {
+                throw new \RuntimeException("Database connection class does not exists: " . $connectionClass, E_ERROR);
+            } else {
+                $ConnectionObject = new $connectionClass();
+                $ConnectionObject->set($connectionData['host'], $connectionData['username'], $connectionData['password'], $connectionData['database'], $connectionData['port']);
+            }
         }
 
         $this->createOutput($Logger);

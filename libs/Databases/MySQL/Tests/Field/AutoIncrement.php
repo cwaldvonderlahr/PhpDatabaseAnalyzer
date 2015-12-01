@@ -37,13 +37,13 @@ class AutoIncrement
 
     public function runTest()
     {
-        $this->Logger->setInfo("Start " . __NAMESPACE__ . __CLASS__);
+        $this->Logger->setInfo("Start " . __CLASS__);
         
         $this->getData();
         
         $this->checkData();
         
-        $this->Logger->setInfo("End " . __NAMESPACE__ . __CLASS__);
+        $this->Logger->setInfo("End " . __CLASS__);
         
         return true;
     }
@@ -68,6 +68,9 @@ class AutoIncrement
     private function checkData()
     {
         foreach ($this->data as $tableName => $tableValues) {
+        	
+        	$this->Logger->setInfo("Check Table " . $tableName);
+        	
             $dataType = $this->splitColumnDataType($tableValues['Type']);
             
             unset($this->data[$tableName]['Type'], $this->data[$tableName]['Extra']);
@@ -97,10 +100,12 @@ class AutoIncrement
                 $percentOfAutoIncrementStatus = (int) round(($currentValue/$maxValue)*100, 0);
                 
                 if ($percentOfAutoIncrementStatus > 70) {
-                    $this->Logger->setIssue("0", "Error", "");
+                    $this->Logger->setIssue("error", $percentOfAutoIncrementStatus."% of AutoIncrement reached", 10);
                 } elseif ($percentOfAutoIncrementStatus > 40) {
-                    $this->Logger->setIssue("0", "Error", "");
-                }
+                    $this->Logger->setIssue("warning", $percentOfAutoIncrementStatus."% of AutoIncrement reached", 5);
+                } elseif ($percentOfAutoIncrementStatus > 10) {
+                    $this->Logger->setIssue("notice", $percentOfAutoIncrementStatus."% of AutoIncrement reached", 1);
+                } 
             }
         }
     }

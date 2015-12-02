@@ -1,7 +1,8 @@
 # PhpDatabaseAnalyzer
 
-https://scrutinizer-ci.com/g/ironchrissi/PhpDatabaseAnalyzer/badges/quality-score.png?b=master
-https://scrutinizer-ci.com/g/ironchrissi/PhpDatabaseAnalyzer/badges/build.png?b=master
+![Scrutinizer Score](https://scrutinizer-ci.com/g/ironchrissi/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
+![Scrutinizer Build](https://scrutinizer-ci.com/g/ironchrissi/PhpDatabaseAnalyzer/badges/build.png?b=master)
+
 
 Project is still in dev. 
 

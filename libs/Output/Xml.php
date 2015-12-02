@@ -4,7 +4,7 @@
  *
  * @category  Output
  * @package   PhpDatabaseAnalyzer
- * @author    ironchrissi <mail@ironchrissi.de>
+ * @author    Frederik Glücks <frederik@gluecks-online.de>
  * @copyright Copyright (c) 2015
  * @license   http://opensource.org/licenses/gpl-3.0.html GNU Public License
  * @link      https://github.com/ironchrissi/PhpDatabaseAnalyzer

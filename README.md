@@ -1,7 +1,7 @@
 # PhpDatabaseAnalyzer
 
-![Scrutinizer Score](https://scrutinizer-ci.com/g/ironchrissi/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
-![Scrutinizer Build](https://scrutinizer-ci.com/g/ironchrissi/PhpDatabaseAnalyzer/badges/build.png?b=master)
+![Scrutinizer Score](https://scrutinizer-ci.com/g/cwaldvonderlahr/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
+![Scrutinizer Build](https://scrutinizer-ci.com/g/cwaldvonderlahr/PhpDatabaseAnalyzer/badges/build.png?b=master)
 
 
 Project is still in dev. 
@@ -42,5 +42,5 @@ Project is still in dev.
 ## future plan
 
 ## credits
-- Chrissi (https://github.com/ironchrissi)
+- Chrissi (https://github.com/cwaldvonderlahr)
 - Fred (https://github.com/fgluecks)

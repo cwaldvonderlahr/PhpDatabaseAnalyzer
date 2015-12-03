@@ -4,10 +4,10 @@
  *
  * @category  Database
  * @package   PhpDatabaseAnalyzer
- * @author    ironchrissi <mail@ironchrissi.de>
+ * @author    Christian Wald-von der Lahr <dev@wald-vonderlahr.de>
  * @copyright Copyright (c) 2015
  * @license   http://opensource.org/licenses/gpl-3.0.html GNU Public License
- * @link      https://github.com/ironchrissi/PhpDatabaseAnalyzer
+ * @link      https://github.com/cwaldvonderlahr/PhpDatabaseAnalyzer
  * @version   0.1
  **/
 namespace PhpDatabaseAnalyzer\Databases\Mysql\Tests\Field;

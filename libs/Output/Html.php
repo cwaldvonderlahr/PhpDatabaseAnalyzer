@@ -20,8 +20,8 @@ class Html
         /* do something */
     }
     
-    private function addCss(&$dom, &$head, $cssFile) {
-        
+    private function addCss(&$dom, &$head, $cssFile)
+    {
         $link = $dom->createElement("link");
         
         $relAttr = $dom->createAttribute("rel");
@@ -63,7 +63,6 @@ class Html
         $table->appendChild($tbody);
         
         foreach ($Logger->getLog() as $logEntry) {
-            
             $tr = $dom->createElement("tr");
     
             foreach ($logEntry as $fieldName => $fieldValue) {
@@ -80,5 +79,5 @@ class Html
     
         header("Content-type: text/html");
         print $dom->saveHTML($html);
-    }    
+    }
 }

@@ -40,7 +40,7 @@ class MemoryUsageTest extends \PHPUnit_Framework_TestCase
         $numberOfEntries = 10000;
         $entries = array();
         
-        for($i = 0; $i < $numberOfEntries; $i++) {
+        for ($i = 0; $i < $numberOfEntries; $i++) {
             $str = md5(time());
             $str = substr($str, 0, rand(1, 20));
             $entries[] = array('type' => 'info', 'text' => $str);

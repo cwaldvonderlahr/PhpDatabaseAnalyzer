@@ -12,7 +12,7 @@
  **/
 namespace PhpDatabaseAnalyzer\Databases\Mysql\Tests\Field;
 
-class AutoIncrement
+class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
 {
 
     protected $Database;

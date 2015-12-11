@@ -101,7 +101,7 @@ class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
             if (isset($this->datatypeMaxValues[$this->data[$tableName]['type']])) {
                 $maxValue = 0;
                 
-                if (isset($this->data[$tableName]['unsigned']) and $this->data[$tableName]['unsigned'] == true) {
+                if (isset($this->data[$tableName]['unsigned']) && $this->data[$tableName]['unsigned'] == true) {
                     $maxValue = $this->datatypeMaxValues[$this->data[$tableName]['type']]['unsigned'];
                 } else {
                     $maxValue = $this->datatypeMaxValues[$this->data[$tableName]['type']]['signed'];
@@ -197,7 +197,7 @@ class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
             
             $autoIncrementValue = (int) $this->Database->getRow($query)[0];
             
-            if (isset($autoIncrementValue) and ! empty($autoIncrementValue)) {
+            if (isset($autoIncrementValue) && ! empty($autoIncrementValue)) {
                 $columns[$tableName]['autoIncrementValue'] = $autoIncrementValue;
             }
         }

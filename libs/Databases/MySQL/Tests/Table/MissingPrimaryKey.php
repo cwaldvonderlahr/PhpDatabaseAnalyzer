@@ -74,7 +74,7 @@ class MissingPrimaryKey implements \PhpDatabaseAnalyzer\DatabaseTestInterface
         
         $result = $this->Database->getArray($query, 'assoc');
         
-        if (isset($result, $result[0], $result[0]['Table']) === true and $result[0]['Table'] == $tablename) {
+        if (isset($result, $result[0], $result[0]['Table']) === true && $result[0]['Table'] == $tablename) {
             unset($result);
             return true;
         }

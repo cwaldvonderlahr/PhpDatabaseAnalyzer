@@ -36,7 +36,7 @@ class Logger implements LoggerInterface
 
     public function setInfo($text)
     {
-        if ($this->loggingMode == 'full' and is_string($text) and ! empty($text)) {
+        if ($this->loggingMode == 'full' && is_string($text) && ! empty($text)) {
             $this->log[] = array(
                 'logType' => 'info',
                 'timestamp' => date("U"),
@@ -50,7 +50,7 @@ class Logger implements LoggerInterface
 
     public function setIssue($type, $text, $scorePoints)
     {
-        if (! empty($text) and preg_match("(notice|warning|critical)", $type) and $scorePoints > 0) {
+        if (! empty($text) && preg_match("(notice|warning|critical)", $type) && $scorePoints > 0) {
             $this->log[] = array(
                 'logType' => 'issue',
                 'timestamp' => date("U"),

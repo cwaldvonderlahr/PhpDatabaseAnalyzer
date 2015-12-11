@@ -38,7 +38,7 @@ class Config implements ConfigInterface
         } else {
             $this->xmlConfigObject = simplexml_load_file($configFile);
 
-            if (! is_object($this->xmlConfigObject) or $this->xmlConfigObject->getName() != 'phpDatabaseAnalyzer') {
+            if (! is_object($this->xmlConfigObject) || $this->xmlConfigObject->getName() != 'phpDatabaseAnalyzer') {
                 throw new \InvalidArgumentException("Invalid config file", E_ERROR);
             } else {
                 return true;

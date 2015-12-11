@@ -45,7 +45,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         $this->setPort($port);
         $this->setCharset($charset);
         
-        $this->mysqli = new \mysqli($this->host, $this->username, $this->password, $this->database, $this->port);
+        $this->mysqli = new \mysqli($this->getHost(), $this->getUsername(), $this->getPassword(), $this->getDatabase(), $this->getPort());
         
         if ($this->mysqli->connect_error) {
             throw new \Exception('Connection Error ' . $this->mysqli->connect_errno . ': ' . $this->mysqli->connect_error);

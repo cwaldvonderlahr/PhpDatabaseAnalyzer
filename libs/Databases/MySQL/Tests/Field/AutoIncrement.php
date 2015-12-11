@@ -1,6 +1,7 @@
 <?php
 /**
  * Mysqli Autoincrement Test Class
+ * Find AutoIncrement Values that are near the maximum value of the datatype
  *
  * @category  Database
  * @package   PhpDatabaseAnalyzer
@@ -83,8 +84,6 @@ class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
     private function checkData()
     {
         foreach ($this->data as $tableName => $tableValues) {
-            // $this->Logger->setInfo("Check Table " . $tableName);
-            
             $dataType = $this->splitColumnDataType($tableValues['Type']);
             
             unset($this->data[$tableName]['Type'], $this->data[$tableName]['Extra']);
@@ -119,8 +118,6 @@ class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
                     $this->Logger->setIssue("warning", $percentOfAutoIncrementStatus . "% of AutoIncrement reached", 5);
                 } elseif ($percentOfAutoIncrementStatus > 50) {
                     $this->Logger->setIssue("notice", $percentOfAutoIncrementStatus . "% of AutoIncrement reached", 1);
-                } else {
-                    // $this->Logger->setInfo("No Issue found");
                 }
             }
         }

@@ -56,16 +56,19 @@ class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
             
             // check difference
             if ($tableCollation !== $this->data['databaseCollation']) {
-                $this->Logger->setIssue("warning", "Table " . $tableName . " has not the default schema collation (".$this->data['databaseCollation'].")", 5);
+                $this->Logger->setIssue("warning", "Table " . $tableName . " (".$tableCollation.") has not the default schema collation (".$this->data['databaseCollation'].")", 5);
             }
         }
     }
     
     private function getSchemaDefaultCollation()
     {
-        $query = ("SELECT default_character_set_name 
-                   FROM information_schema.SCHEMATA
-                   WHERE schema_name = '".$this->Database->getDatabase()."';");
+        $query = ("SELECT 
+                        default_collation_name 
+                   FROM 
+                        information_schema.SCHEMATA
+                   WHERE 
+                        schema_name = '".$this->Database->getDatabase()."';");
         
         $result = $this->Database->getRow($query);
         
@@ -81,14 +84,14 @@ class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
     {
         
         $query = ("SELECT 
-                       CCSA.character_set_name 
+                       b.collation_name 
                    FROM 
-                       information_schema.`TABLES` T,
-                       information_schema.`COLLATION_CHARACTER_SET_APPLICABILITY` CCSA
+                       information_schema.`TABLES` as a,
+                       information_schema.`COLLATION_CHARACTER_SET_APPLICABILITY` b
                    WHERE 
-                        CCSA.collation_name = T.table_collation and
-                        T.table_schema = '".$this->Database->getDatabase()."' and
-                        T.table_name = '".$tableName."';");
+                        b.collation_name = a.table_collation and
+                        a.table_schema = '".$this->Database->getDatabase()."' and
+                        a.table_name = '".$tableName."';");
         
         $result = $this->Database->getRow($query);
         

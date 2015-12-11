@@ -50,7 +50,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         if ($this->mysqli->connect_error) {
             throw new \Exception('Connection Error ' . $this->mysqli->connect_errno . ': ' . $this->mysqli->connect_error);
         }
-        if (isset($this->charset) and ! empty($this->charset)) {
+        if (isset($this->charset) && ! empty($this->charset)) {
             $this->mysqli->set_charset($this->charset);
         }
         
@@ -137,7 +137,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
      */
     public function setHost($host)
     {
-        if (! isset($host) or empty($host)) {
+        if (! isset($host) || empty($host)) {
             throw new \Exception("Empty Host");
         }
         
@@ -150,7 +150,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
      */
     public function setUsername($username)
     {
-        if (! isset($username) or empty($username)) {
+        if (! isset($username) || empty($username)) {
             throw new \Exception("Empty Username");
         }
         
@@ -172,7 +172,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
      */
     public function setDatabase($database)
     {
-        if (! isset($database) or empty($database)) {
+        if (! isset($database) || empty($database)) {
             throw new \Exception("Empty Database");
         }
         
@@ -185,7 +185,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
      */
     public function setPort($port)
     {
-        if (! isset($port) or empty($port) or $port === 0) {
+        if (! isset($port) || empty($port) || $port === 0) {
             $port = (int) 3306;
         }
         
@@ -198,7 +198,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
      */
     public function setCharset($charset)
     {
-        if (! isset($charset) or empty($charset)) {
+        if (! isset($charset) || empty($charset)) {
             $charset = "";
         }
         
@@ -226,8 +226,6 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     {
         $result = $this->query($query);
         
-        $returnArray = array();
-        
         $fetchArrayType = MYSQLI_NUM;
         if ($arrayType == "assoc") {
             $fetchArrayType = MYSQLI_ASSOC;
@@ -249,8 +247,6 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     public function getRow($query)
     {
         $result = $this->query($query);
-        
-        $return = array();
         
         $return = $result->fetch_row();
         

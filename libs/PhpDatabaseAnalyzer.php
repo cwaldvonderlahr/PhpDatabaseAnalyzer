@@ -68,7 +68,6 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
         $tests = array();
 
         $testsCases = array(
-            'Database',
             'Field',
             'Table'
         );

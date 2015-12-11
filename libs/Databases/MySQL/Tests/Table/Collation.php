@@ -67,7 +67,7 @@ class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
                    FROM information_schema.SCHEMATA
                    WHERE schema_name = '".$this->Database->getDatabase()."';");
         
-        $result = $this->Database->getRow($query, 'num');
+        $result = $this->Database->getRow($query);
         
         if (isset($result, $result[0]) === true) {
             return $result[0];

@@ -30,11 +30,10 @@ class Charset implements \PhpDatabaseAnalyzer\DatabaseTestInterface
     public function runTest()
     {
         // $this->Logger->setInfo("Start " . __CLASS__);
-
         $this->Logger->setInfo("Test not implemented " . __CLASS__);
-
+        
         // $this->Logger->setInfo("End " . __CLASS__);
-
+        
         return true;
     }
 }

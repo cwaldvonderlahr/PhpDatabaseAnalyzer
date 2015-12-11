@@ -56,6 +56,7 @@ class MemoryUsageTest extends \PHPUnit_Framework_TestCase
             }
         }
         
+        $log = array();
         $log = $this->Logger->getLog();
         
         $endMemory = memory_get_usage();

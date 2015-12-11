@@ -214,11 +214,12 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     {
         return $this->mysqli->query($query);
     }
-    
+
     /**
      *
      * @param string $query
-     * @param string $arrayType (assoc or num)
+     * @param string $arrayType
+     *            (assoc or num)
      * @return array
      */
     public function getArray($query, $arrayType = 'num')
@@ -239,7 +240,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         
         return $returnArray;
     }
-    
+
     /**
      *
      * @param string $query
@@ -259,7 +260,6 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         
         return $return;
     }
-    
 
     /**
      *

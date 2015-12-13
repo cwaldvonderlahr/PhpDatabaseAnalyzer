@@ -113,6 +113,7 @@ class Config implements ConfigInterface
                 'engine' => $this->xmlConfigObject->databaseTestSuite[$positionInList]['databaseEngine']->__toString(),
                 'host' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->host->__toString(),
                 'port' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->port->__toString(),
+                'socket' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->socket->__toString(),
                 'username' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->username->__toString(),
                 'password' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->password->__toString(),
                 'database' => $this->xmlConfigObject->databaseTestSuite[$positionInList]->connection->database->__toString()

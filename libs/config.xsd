@@ -13,6 +13,7 @@
 									<xsd:sequence>
 										<xsd:element name="host" minOccurs="1" maxOccurs="1" />
 										<xsd:element name="port" minOccurs="1" maxOccurs="1" />
+										<xsd:element name="socket" minOccurs="1" maxOccurs="1" />
 										<xsd:element name="username" minOccurs="1" maxOccurs="1" />
 										<xsd:element name="password" minOccurs="1" maxOccurs="1" />
 										<xsd:element name="database" minOccurs="1" maxOccurs="1" />

@@ -5,6 +5,7 @@
 		<connection>
 			<host>localhost</host>
 			<port>3306</port>
+			<socket>/tmp/mysql.sock</socket>
 			<username>root</username>
 			<password>9sasjka7a</password>
 			<database>testDB1</database>
@@ -14,6 +15,7 @@
 		<connection>
 			<host>conftec-testdb01</host>
 			<port>3306</port>
+			<socket></socket>
 			<username>admin</username>
 			<password>2kkwsk27</password>
 			<database>testDB2</database>

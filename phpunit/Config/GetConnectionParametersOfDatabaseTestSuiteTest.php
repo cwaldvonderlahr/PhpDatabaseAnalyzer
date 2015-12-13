@@ -41,7 +41,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
         $databaseTestSuite = $this->Config->getConnectionParametersOfDatabaseTestSuite(0);
 
         $this->assertTrue(is_array($databaseTestSuite));
-        $this->assertEquals(6, count($databaseTestSuite));
+        $this->assertEquals(7, count($databaseTestSuite));
 
         $this->assertArrayHasKey("engine", $databaseTestSuite);
         $this->assertEquals("MySQL", $databaseTestSuite['engine']);
@@ -51,6 +51,9 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
 
         $this->assertArrayHasKey("port", $databaseTestSuite);
         $this->assertEquals("3306", $databaseTestSuite['port']);
+        
+        $this->assertArrayHasKey("socket", $databaseTestSuite);
+        $this->assertEquals("/tmp/mysql.sock", $databaseTestSuite['socket']);
 
         $this->assertArrayHasKey("username", $databaseTestSuite);
         $this->assertEquals("root", $databaseTestSuite['username']);
@@ -72,7 +75,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
         $databaseTestSuite = $this->Config->getConnectionParametersOfDatabaseTestSuite(1);
 
         $this->assertTrue(is_array($databaseTestSuite));
-        $this->assertEquals(6, count($databaseTestSuite));
+        $this->assertEquals(7, count($databaseTestSuite));
 
         $this->assertArrayHasKey("engine", $databaseTestSuite);
         $this->assertEquals("MySQL", $databaseTestSuite['engine']);
@@ -82,6 +85,9 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
 
         $this->assertArrayHasKey("port", $databaseTestSuite);
         $this->assertEquals("3306", $databaseTestSuite['port']);
+        
+        $this->assertArrayHasKey("socket", $databaseTestSuite);
+        $this->assertEquals("", $databaseTestSuite['socket']);
 
         $this->assertArrayHasKey("username", $databaseTestSuite);
         $this->assertEquals("admin", $databaseTestSuite['username']);

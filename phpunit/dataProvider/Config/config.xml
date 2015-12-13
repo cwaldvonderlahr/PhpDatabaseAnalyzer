@@ -6,6 +6,7 @@
 		<connection>
 			<host>localhost</host>
 			<port>3306</port>
+			<socket>/tmp/mysql.sock</socket>
 			<username>root</username>
 			<password>asdaddfaf</password>
 			<database>testDB</database>

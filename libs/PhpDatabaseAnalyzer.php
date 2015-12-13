@@ -46,7 +46,7 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
                 throw new \RuntimeException("Database connection class does not exists: " . $connectionClass, E_ERROR);
             } else {
                 $ConnectionObject = new $connectionClass();
-                $ConnectionObject->set($connectionData['host'], $connectionData['username'], $connectionData['password'], $connectionData['database'], $connectionData['port']);
+                $ConnectionObject->set($connectionData['host'], $connectionData['username'], $connectionData['password'], $connectionData['database'], $connectionData['port'], $connectionData['socket']);
 
                 $testList = $this->getAllTestsOfDatabaseEngine($connectionData['engine']);
 

@@ -17,7 +17,7 @@ interface DatabaseConnectionInterface
 
     public function __construct();
 
-    public function set($host, $username, $password, $database, $port, $charset);
+    public function set($host, $username, $password, $database, $port, $socket, $charset);
 
     public function getHost();
 
@@ -28,6 +28,8 @@ interface DatabaseConnectionInterface
     public function getDatabase();
 
     public function getPort();
+    
+    public function getSocket();
 
     public function getCharset();
 
@@ -40,6 +42,8 @@ interface DatabaseConnectionInterface
     public function setDatabase($database);
 
     public function setPort($port);
+    
+    public function setSocket($socket);
 
     public function setCharset($charset);
 

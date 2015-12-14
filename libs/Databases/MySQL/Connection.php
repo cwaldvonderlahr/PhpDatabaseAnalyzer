@@ -123,7 +123,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     public function getSocket()
     {
         return $this->socket;
-    }    
+    }
 
     /**
      *
@@ -136,7 +136,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param \mysqli $mysqli            
+     * @param \mysqli $mysqli
      */
     public function setMysqli($mysqli)
     {
@@ -145,7 +145,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $host            
+     * @param string $host
      */
     public function setHost($host)
     {
@@ -158,7 +158,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -171,7 +171,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $password            
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -180,7 +180,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $database            
+     * @param string $database
      */
     public function setDatabase($database)
     {
@@ -193,7 +193,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param int $port            
+     * @param int $port
      */
     public function setPort($port)
     {
@@ -215,11 +215,11 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
     
         $this->socket = $socket;
-    }    
+    }
 
     /**
      *
-     * @param string $charset            
+     * @param string $charset
      */
     public function setCharset($charset)
     {
@@ -232,7 +232,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $query            
+     * @param string $query
      * @return object
      */
     public function query($query)
@@ -242,7 +242,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $query            
+     * @param string $query
      * @param string $arrayType
      *            (assoc or num)
      * @return array
@@ -266,7 +266,7 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 
     /**
      *
-     * @param string $query            
+     * @param string $query
      * @return array
      */
     public function getRow($query)

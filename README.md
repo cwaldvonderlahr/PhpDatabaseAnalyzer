@@ -73,6 +73,8 @@ Example:
 
 ## future plan
 
+work on 0.2
+
 ## credits
 - Chrissi (https://github.com/cwaldvonderlahr)
 - Fred (https://github.com/fgluecks)

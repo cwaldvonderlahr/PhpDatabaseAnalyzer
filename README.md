@@ -64,10 +64,6 @@ Replace "OUTPUT-FILE" with the name of the file in which the output should be sa
 Example: 
 "php phpDatabaseAnalyzer.php > result.xml"
 
-#####Windows
-
-Windows Support comming soon
-
 ## contact
 
 mail (at) phpdatabaseanalyzer.de

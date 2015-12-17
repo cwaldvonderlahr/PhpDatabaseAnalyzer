@@ -2,32 +2,27 @@
 
 ![Scrutinizer Score](https://scrutinizer-ci.com/g/cwaldvonderlahr/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
 
-Project is still in dev. 
+Project is still in development. 
 
-## idea
-- simple
-- awesome
-- clean
-- fun
+## current version
 
-## facts
-- written in PHP7
-- helpful for database architects
-- ready for performance geeks
+- v.0.1. beta
 
 ## supported databases
-- mySQL5
+- mySQL 5.5
 
 ## tests
-- Database Tests
-- Table Tests
-- Field Tests
+- Auto increment: check auto increment values compared with the max values
+- Charset: check database charset and collation compared with table charset and collation
+- Charset: check table charset and collation compared with column charset and collation
+- Keys: find tables without primary key
 
 ## output-Formats
 - XML
 - HTML
 
 ## code
+- PHP 5.6
 - PSR-0 Autoloader
 - PSR-1 Coding Standard
 - PSR-2 Codestyle
@@ -71,7 +66,11 @@ Example:
 
 #####Windows
 
-## future plan
+Windows Support comming soon
+
+## contact
+
+mail (at) phpdatabaseanalyzer.de
 
 ## credits
 - Chrissi (https://github.com/cwaldvonderlahr)

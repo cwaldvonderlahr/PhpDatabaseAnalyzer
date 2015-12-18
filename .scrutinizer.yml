@@ -9,6 +9,3 @@ coding_style:
 tools:
     php_sim: true
     php_cpd: false
-    external_code_coverage:
-        timeout: 600
-        runs: 3

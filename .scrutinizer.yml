@@ -1,2 +1,11 @@
 checks:
     php: true
+filter: {  }
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                unary_additive: true
+tools:
+    php_sim: true
+    php_cpd: false

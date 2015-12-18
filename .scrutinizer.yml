@@ -9,11 +9,6 @@ coding_style:
 tools:
     php_sim: true
     php_cpd: false
-build:
-    tests:
-        override:
-            -
-                command: 'phpunit --coverage-clover=some-file'
-                coverage:
-                    file: 'some-file'
-                    format: 'php-clover'
+    external_code_coverage:
+        timeout: 600
+        runs: 3

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mysqli Connection Class
  *
@@ -10,34 +11,55 @@
  * @link      https://github.com/cwaldvonderlahr/PhpDatabaseAnalyzer
  * @version   0.1
  **/
+
 namespace PhpDatabaseAnalyzer\Databases\Mysql;
 
+
+/**
+ * Mysqli Connection Class
+ * 
+ * @author Christian Wald-von der Lahr <dev@wald-vonderlahr.de>
+ *
+ */
 class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
 {
+    /**
+     * @var object mysqli Object
+     * @var string $host mysqli host (IP Adresse or Hostname)
+     * @var string $username mysqli username
+     * @var string password mysqli password
+     * @var string $database mysqli database
+     * @var string $port mysqli port
+     * @var string $socket mysqli socket
+     * @var string $charset mysqli charset
+     */
+    protected $mysqli, $host, $username, $password, $database, $port, $socket, $charset;
 
-    protected $mysqli;
-
-    protected $host;
-
-    protected $username;
-
-    protected $password;
-
-    protected $database;
-
-    protected $port;
-
-    protected $socket;
-
-    protected $charset;
-
+    /**
+     * @var object $instance mysqli current instance
+     */
     private static $instance;
 
+    /**
+     * default construct
+     */
     public function __construct()
     {
-        /* do something */
+        /* do something if neccessary */
     }
 
+    /**
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::set()
+     * 
+     * @param string $host
+     * @param string $username
+     * @param string $password
+     * @param string $database
+     * @param integer $port
+     * @param string $socket
+     * @param string $charset
+     */
     public function set($host, $username, $password, $database, $port = 0, $socket = "", $charset = "")
     {
         $this->setHost($host);
@@ -62,18 +84,10 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         return true;
     }
 
-    /**
-     *
-     * @return the $mysqli
-     */
-    public function getMysqli()
-    {
-        return $this->mysqli;
-    }
 
     /**
-     *
-     * @return the $host
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getHost()
      */
     public function getHost()
     {
@@ -81,8 +95,8 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
-     * @return the $username
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getUsername()
      */
     public function getUsername()
     {
@@ -90,8 +104,8 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
-     * @return the $password
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getPassword()
      */
     public function getPassword()
     {
@@ -99,8 +113,8 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
-     * @return the $database
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getDatabase()
      */
     public function getDatabase()
     {
@@ -108,8 +122,8 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
-     * @return the $port
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getPort()
      */
     public function getPort()
     {
@@ -117,8 +131,8 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
     
     /**
-     *
-     * @return the $socket
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getSocket()
      */
     public function getSocket()
     {
@@ -126,26 +140,21 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
-     * @return the $charset
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getCharset()
      */
     public function getCharset()
     {
         return $this->charset;
     }
-
+    
     /**
-     *
-     * @param \mysqli $mysqli
-     */
-    public function setMysqli($mysqli)
-    {
-        $this->mysqli = $mysqli;
-    }
-
-    /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setHost()
+     * 
      * @param string $host
+     * 
+     * @return boolean
      */
     public function setHost($host)
     {
@@ -154,11 +163,17 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
         
         $this->host = (string) $host;
+        
+        return true;
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setUsername()
+     * 
      * @param string $username
+     * 
+     * @return boolean
      */
     public function setUsername($username)
     {
@@ -167,20 +182,32 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
         
         $this->username = (string) $username;
+        
+        return true;
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setPassword()
+     * 
      * @param string $password
+     * 
+     * @return boolean
      */
     public function setPassword($password)
     {
         $this->password = (string) $password;
+        
+        return true;
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setDatabase()
+     * 
      * @param string $database
+     * 
+     * @return boolean
      */
     public function setDatabase($database)
     {
@@ -189,11 +216,17 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
         
         $this->database = (string) $database;
+        
+        return true;
     }
 
     /**
-     *
-     * @param int $port
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setPort()
+     * 
+     * @param integer $port
+     * 
+     * @return boolean
      */
     public function setPort($port)
     {
@@ -202,11 +235,17 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
         
         $this->port = (int) $port;
+        
+        return true;
     }
     
     /**
-     *
-     * @param int $socket
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setSocket()
+     * 
+     * @param string $socket
+     * 
+     * @return boolean
      */
     public function setSocket($socket)
     {
@@ -215,11 +254,17 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
     
         $this->socket = $socket;
+        
+        return true;
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::setCharset()
+     * 
      * @param string $charset
+     * 
+     * @return boolean
      */
     public function setCharset($charset)
     {
@@ -228,11 +273,16 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         }
         
         $this->charset = (string) $charset;
+        
+        return true;
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::query()
+     * 
      * @param string $query
+     * 
      * @return object
      */
     public function query($query)
@@ -241,10 +291,12 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getArray()
+     * 
      * @param string $query
      * @param string $arrayType
-     *            (assoc or num)
+     * 
      * @return array
      */
     public function getArray($query, $arrayType = 'num')
@@ -264,9 +316,12 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
         return $returnArray;
     }
 
-    /**
-     *
+     /**
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getRow()
+     * 
      * @param string $query
+     * 
      * @return array
      */
     public function getRow($query)
@@ -283,7 +338,9 @@ class Connection implements \PhpDatabaseAnalyzer\DatabaseConnectionInterface
     }
 
     /**
-     *
+     * {@inheritDoc}
+     * @see \PhpDatabaseAnalyzer\DatabaseConnectionInterface::getRow()
+     * 
      * @return \PhpDatabaseAnalyzer\Databases\Mysql\Connection
      */
     public static function getInstance()

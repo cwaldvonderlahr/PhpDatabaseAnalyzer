@@ -57,7 +57,7 @@ class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
                 $columnsCollation = $this->getColumnsCollation($tableName, $columnName);
                 
                 if ($columnsCollation !== false && $tableCollation !== $columnsCollation) {
-                    $this->Logger->setIssue("warning", "Column " . $columnName . " (".$columnsCollation.") has not the same Collation as the table ".$tableName." (".$tableCollation.")", 5);
+                    $this->Logger->setIssue("warning", "Table ".$tableName." - Column " . $columnName . " (".$columnsCollation.") has not the same Collation as the table ".$tableName." (".$tableCollation.")", 5);
                 }
             }
         }

@@ -113,11 +113,11 @@ class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
                 $percentOfAutoIncrementStatus = (int) round(($currentValue / $maxValue) * 100, 0);
                 
                 if ($percentOfAutoIncrementStatus > 90) {
-                    $this->Logger->setIssue("error", $percentOfAutoIncrementStatus . "% of AutoIncrement reached", 10);
+                    $this->Logger->setIssue("error", "Table ".$tableName." - ".$percentOfAutoIncrementStatus . "% of AutoIncrement reached", 10);
                 } elseif ($percentOfAutoIncrementStatus > 70) {
-                    $this->Logger->setIssue("warning", $percentOfAutoIncrementStatus . "% of AutoIncrement reached", 5);
+                    $this->Logger->setIssue("warning", "Table ".$tableName." - ".$percentOfAutoIncrementStatus . "% of AutoIncrement reached", 5);
                 } elseif ($percentOfAutoIncrementStatus > 50) {
-                    $this->Logger->setIssue("notice", $percentOfAutoIncrementStatus . "% of AutoIncrement reached", 1);
+                    $this->Logger->setIssue("notice", "Table ".$tableName." - ".$percentOfAutoIncrementStatus . "% of AutoIncrement reached", 1);
                 }
             }
         }

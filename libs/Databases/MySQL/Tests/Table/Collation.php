@@ -46,7 +46,6 @@ class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
         $this->data['tables'] = $this->getAllTables();
         
         $this->data['databaseCollation'] = $this->getSchemaDefaultCollation();
-        
     }
     
     private function checkData()
@@ -77,7 +76,6 @@ class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
         }
         
         return false;
-        
     }
     
     private function getTableCollation($tableName)

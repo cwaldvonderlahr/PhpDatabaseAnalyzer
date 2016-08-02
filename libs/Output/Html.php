@@ -74,7 +74,6 @@ class Html
                 $tr->appendChild($td);
             }+
             $tbody->appendChild($tr);
-            
         }
     
         header("Content-type: text/html");

@@ -40,7 +40,9 @@ class Logger implements LoggerInterface
             $this->log[] = array(
                 'logType' => 'info',
                 'timestamp' => date("U"),
-                'text' => $text
+                'issueType' => null,
+                'text' => $text,
+                'scorePoints' => null
             );
             return true;
         } else {

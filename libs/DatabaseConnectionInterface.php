@@ -1,15 +1,15 @@
 <?php
 /**
-* DatabaseConnection interface
-*
-* @category  Interface
-* @package   PhpDatabaseAnalyzer
-* @author    Christian Wald-von der Lahr <dev@wald-vonderlahr.de>
-* @copyright Copyright (c) 2015
-* @license   http://opensource.org/licenses/gpl-3.0.html GNU Public License
-* @link      https://github.com/cwaldvonderlahr/PhpDatabaseAnalyzer
-* @version   0.1
-**/
+ * DatabaseConnection interface
+ *
+ * @category  Interface
+ * @package   PhpDatabaseAnalyzer
+ * @author    Christian Wald-von der Lahr <dev@wald-vonderlahr.de>
+ * @copyright Copyright (c) 2015
+ * @license   http://opensource.org/licenses/gpl-3.0.html GNU Public License
+ * @link      https://github.com/cwaldvonderlahr/PhpDatabaseAnalyzer
+ * @version   0.1
+ **/
 namespace PhpDatabaseAnalyzer;
 
 interface DatabaseConnectionInterface
@@ -28,7 +28,7 @@ interface DatabaseConnectionInterface
     public function getDatabase();
 
     public function getPort();
-    
+
     public function getSocket();
 
     public function getCharset();
@@ -42,7 +42,7 @@ interface DatabaseConnectionInterface
     public function setDatabase($database);
 
     public function setPort($port);
-    
+
     public function setSocket($socket);
 
     public function setCharset($charset);

@@ -42,7 +42,6 @@ class Xml implements OutputInterface
             }
         }
 
-        header("Content-type: text/xml");
-        print $dom->saveXML($root);
+        return $dom->saveXML($root);
     }
 }

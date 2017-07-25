@@ -27,7 +27,7 @@ class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Config = null;
-
+        
         parent::tearDown();
     }
 
@@ -37,7 +37,7 @@ class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function getOutputType()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/config.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
         $outputType = $this->Config->getOutputType();
         $this->assertTrue(is_string($outputType));
         $this->assertEquals("XML", $outputType);
@@ -51,7 +51,7 @@ class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function getOutputTypeXmlWithoutOutputType()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithoutOutputType.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithoutOutputType.xml");
         $this->Config->getOutputType();
     }
 }

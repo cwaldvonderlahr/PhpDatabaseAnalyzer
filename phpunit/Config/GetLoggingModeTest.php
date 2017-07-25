@@ -27,7 +27,7 @@ class GetLoggingModeTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Config = null;
-
+        
         parent::tearDown();
     }
 
@@ -37,7 +37,7 @@ class GetLoggingModeTest extends \PHPUnit_Framework_TestCase
      */
     public function getLoggingMode()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/config.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
         $loggingMode = $this->Config->getLoggingMode();
         $this->assertTrue(is_string($loggingMode));
         $this->assertEquals("full", $loggingMode);
@@ -51,7 +51,7 @@ class GetLoggingModeTest extends \PHPUnit_Framework_TestCase
      */
     public function getLoggingModeXmlWithoutLoggingMode()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithoutLoggingMode.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithoutLoggingMode.xml");
         $this->Config->getLoggingMode();
     }
 }

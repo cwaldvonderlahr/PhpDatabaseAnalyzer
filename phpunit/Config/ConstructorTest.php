@@ -27,7 +27,7 @@ class ConstructorTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Config = null;
-
+        
         parent::tearDown();
     }
 
@@ -61,7 +61,7 @@ class ConstructorTest extends \PHPUnit_Framework_TestCase
      */
     public function constructorInvalidConfigFileName()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/invalidConfig.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/invalidConfig.xml");
     }
 
     /**
@@ -70,8 +70,8 @@ class ConstructorTest extends \PHPUnit_Framework_TestCase
      */
     public function constructorValidConfigFileName()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/config.xml");
-
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
+        
         $this->assertTrue(is_object($this->Config));
     }
 }

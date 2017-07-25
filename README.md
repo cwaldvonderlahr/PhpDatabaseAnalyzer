@@ -4,7 +4,12 @@ Project is still in development.
 
 ## current version
 
-- v.0.1. beta
+- v.0.2 beta
+
+## Scrutinizer Checks
+
+![Scrutinizer](https://scrutinizer-ci.com/g/CONFTEC/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
+
 
 ## supported databases
 - mySQL 5.5

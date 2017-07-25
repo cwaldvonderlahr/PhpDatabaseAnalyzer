@@ -37,10 +37,10 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function validConnection()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "root", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock");
 
-        $this->assertTrue(is_object($Connection));
+    	$this->assertTrue(is_object($this->Connection));
     }
 
     /**
@@ -49,10 +49,10 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function validConnectionWithoutPort()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "mysql", null, "/usr/local/zend/mysql/tmp/mysql.sock");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "root", "", "mysql", null, "/usr/local/zend/mysql/tmp/mysql.sock");
 
-        $this->assertTrue(is_object($Connection));
+    	$this->assertTrue(is_object($this->Connection));
     }
 
     /**
@@ -61,10 +61,10 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function validConnectionWithoutSocket()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "mysql");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "root", "", "mysql");
 
-        $this->assertTrue(is_object($Connection));
+    	$this->assertTrue(is_object($this->Connection));
     }
 
     /**
@@ -75,8 +75,8 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function emptyUser()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "", "", "mysql");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "", "", "mysql");
     }
 
     /**
@@ -87,8 +87,8 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function emptyDatabase()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "root", "", "");
     }
 
     /**
@@ -99,8 +99,8 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function emptyHost()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("", "root", "", "mysql");
+    	$this->Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("", "root", "", "mysql");
     }
 
     /**
@@ -110,10 +110,10 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function invalidUser()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "ro", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "ro", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock");
 
-        $this->assertTrue(is_object($Connection));
+    	$this->assertTrue(is_object($this->Connection));
     }
 
     /**
@@ -122,9 +122,9 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function setCharset()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock", "latin1");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "root", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock", "latin1");
 
-        $this->assertTrue(is_object($Connection));
+    	$this->assertTrue(is_object($this->Connection));
     }
 }

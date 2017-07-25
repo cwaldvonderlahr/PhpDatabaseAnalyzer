@@ -38,10 +38,10 @@ class GetInstanceTest extends \PHPUnit_Framework_TestCase
     public function getInstance()
     {
         \PhpDatabaseAnalyzer\Databases\MySQL\Connection::destroyInstance();
-        $Connection = \PhpDatabaseAnalyzer\Databases\MySQL\Connection::getInstance();
+        $this->Connection= \PhpDatabaseAnalyzer\Databases\MySQL\Connection::getInstance();
 
-        $this->assertTrue(is_object($Connection));
-        $this->assertEquals("PhpDatabaseAnalyzer\Databases\MySQL\Connection", get_class($Connection));
+        $this->assertTrue(is_object($this->Connection));
+        $this->assertEquals("PhpDatabaseAnalyzer\Databases\MySQL\Connection", get_class($this->Connection));
     }
 
 }

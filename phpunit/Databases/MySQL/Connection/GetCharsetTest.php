@@ -37,11 +37,11 @@ class GetCharsetTest extends \PHPUnit_Framework_TestCase
      */
     public function setOwnCharset()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock", "latin1");
+        $this->Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+        $this->Connection->set("localhost", "root", "", "mysql", 3306, "/usr/local/zend/mysql/tmp/mysql.sock", "latin1");
 
-        $this->assertTrue(is_object($Connection));
-        $this->assertEquals("latin1", $Connection->getCharset());
+        $this->assertTrue(is_object($this->Connection));
+        $this->assertEquals("latin1", $this->Connection->getCharset());
     }
 
     /**
@@ -50,10 +50,10 @@ class GetCharsetTest extends \PHPUnit_Framework_TestCase
      */
     public function getDefaultCharset()
     {
-        $Connection = new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
-        $Connection->set("localhost", "root", "", "mysql");
+    	$this->Connection= new \PhpDatabaseAnalyzer\Databases\MySQL\Connection();
+    	$this->Connection->set("localhost", "root", "", "mysql");
 
-        $this->assertTrue(is_object($Connection));
-        $this->assertEquals("", $Connection->getCharset());
+    	$this->assertTrue(is_object($this->Connection));
+    	$this->assertEquals("", $this->Connection->getCharset());
     }
 }

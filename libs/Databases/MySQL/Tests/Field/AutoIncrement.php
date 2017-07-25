@@ -102,7 +102,7 @@ class AutoIncrement implements \PhpDatabaseAnalyzer\DatabaseTestInterface
             unset($dataType);
 
             if (isset($this->datatypeMaxValues[$this->data[$tableName]['type']])) {
-                $maxValue = 0;
+                $maxValue = (int) 0;
 
                 if (isset($this->data[$tableName]['unsigned']) && $this->data[$tableName]['unsigned'] == true) {
                     $maxValue = $this->datatypeMaxValues[$this->data[$tableName]['type']]['unsigned'];

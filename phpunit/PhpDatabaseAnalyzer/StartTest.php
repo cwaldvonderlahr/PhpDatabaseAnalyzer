@@ -18,7 +18,6 @@ class StartTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-
         parent::setUp();
     }
 
@@ -56,6 +55,7 @@ class StartTest extends \PHPUnit_Framework_TestCase
 
         $output = $this->PhpDatabaseAnalyzer->start();
 
+        $this->assertNotFalse($output);
     }
 
     /**
@@ -64,12 +64,14 @@ class StartTest extends \PHPUnit_Framework_TestCase
      * @expectedException RuntimeException
      * @expectedExceptionMessage Output class does not exists
      */
-    public function unkownOutputType()
+    public function unknownOutputType()
     {
         $configFile = dirname(__FILE__) . "/../phpunit_invalid_output.xml";
         $this->PhpDatabaseAnalyzer = new \PhpDatabaseAnalyzer\PhpDatabaseAnalyzer($configFile);
 
         $output = $this->PhpDatabaseAnalyzer->start();
+
+        $this->assertNotFalse($output);
     }
 
     /**

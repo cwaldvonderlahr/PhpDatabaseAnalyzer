@@ -100,8 +100,6 @@ class Html
 
     private function createHeadline($DOM, $body, $Logger)
     {
-        $Logger = (object) $Logger;
-
         $container = $this->createGrip($DOM, $body);
 
         $h1 = $DOM->createElement("h1", "PhpDatabaseAnalyzer test result");
@@ -114,6 +112,8 @@ class Html
         $p->appendChild($classAttr);
 
         $container->appendChild($p);
+
+        return $Logger;
     }
 
     private function createOverview($DOM, $body, $Logger)

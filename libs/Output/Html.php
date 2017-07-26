@@ -100,6 +100,8 @@ class Html
 
     private function createHeadline($DOM, $body, $Logger)
     {
+        $Logger = (object) $Logger;
+
         $container = $this->createGrip($DOM, $body);
 
         $h1 = $DOM->createElement("h1", "PhpDatabaseAnalyzer test result");

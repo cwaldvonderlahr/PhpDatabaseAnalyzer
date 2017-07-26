@@ -59,14 +59,11 @@ class MemoryUsageTest extends \PHPUnit_Framework_TestCase
             }
         }
 
-        $log = array();
-        $log = $this->Logger->getLog();
+        $this->Logger->getLog();
 
         $endMemory = memory_get_usage();
 
         echo "Memory used: " . round(($endMemory - $startMemory) / 1024 / 1024, 4) . " MB\n";
         echo "Peak: " . round((memory_get_peak_usage() - $startMemory) / 1024 / 1024, 4) . " MB\n";
-
-    	return $log;
     }
 }

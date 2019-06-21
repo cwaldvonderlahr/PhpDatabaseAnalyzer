@@ -48,7 +48,7 @@ class Config implements ConfigInterface
 
     /**
      *
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @see \PhpDatabaseAnalyzer\ConfigInterface::getOutputType()
      */
@@ -63,7 +63,7 @@ class Config implements ConfigInterface
 
     /**
      *
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @see \PhpDatabaseAnalyzer\ConfigInterface::getLoggingMode()
      */
@@ -78,7 +78,7 @@ class Config implements ConfigInterface
 
     /**
      *
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @see \PhpDatabaseAnalyzer\ConfigInterface::getDatabaseTestSuiteAsList()
      */
@@ -100,7 +100,7 @@ class Config implements ConfigInterface
 
     /**
      *
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @see \PhpDatabaseAnalyzer\ConfigInterface::getConnectionParametersOfDatabaseTestSuite()
      */

@@ -1,3 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="bootstrap.php">
+<phpunit bootstrap="bootstrap.php" convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true" convertWarningsToExceptions="true"
+	strict="true">
+	<filter>
+		<whitelist>
+			<directory suffix=".php">../libs/</directory>
+			<exclude>
+				<directory>../libs/Databases/MySQL/Tests</directory>
+				<file>../libs/ConfigInterface.php</file>
+				<file>../libs/DatabaseConnectionInterface.php</file>
+				<file>../libs/DatabaseStructureInterface.php</file>
+				<file>../libs/DatabaseTestInterface.php</file>
+				<file>../libs/LoggerInterface.php</file>
+				<file>../libs/PhpDatabaseAnalyzerInterface.php</file>
+				<file>../libs/Output/OutputInterface.php</file>
+			</exclude>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-html" target="../codeCoverage" charset="UTF-8"
+			yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" />
+	</logging>
 </phpunit>

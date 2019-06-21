@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpDatabaseAnalyzer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../libs/config.xsd">
-	<databaseTestSuite databaseEngine="MySQL">
+	<outputType>XML</outputType>
+	<loggingMode>full</loggingMode>
+	<databaseTestSuite databaseEngine="TestEngine">
 		<connection>
 			<host>localhost</host>
 			<port>3306</port>
+			<socket>/usr/local/zend/mysql/tmp/mysql.sock</socket>
 			<username>root</username>
 			<password></password>
-			<database>testDB</database>
+			<database>mysql</database>
 		</connection>
 	</databaseTestSuite>
 </phpDatabaseAnalyzer>

@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Config;
 /**
  * Check test case.
  */
-class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_TestCase
+class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -37,7 +37,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
      */
     public function getConnectionParametersOfDatabaseTestSuite()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/config.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
         $databaseTestSuite = $this->Config->getConnectionParametersOfDatabaseTestSuite(0);
 
         $this->assertTrue(is_array($databaseTestSuite));
@@ -51,7 +51,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
 
         $this->assertArrayHasKey("port", $databaseTestSuite);
         $this->assertEquals("3306", $databaseTestSuite['port']);
-        
+
         $this->assertArrayHasKey("socket", $databaseTestSuite);
         $this->assertEquals("/tmp/mysql.sock", $databaseTestSuite['socket']);
 
@@ -71,7 +71,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
      */
     public function getConnectionParametersOfDatabaseTestSuiteWithTwoDatabaseTestSuites()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithTwoDatabaseTestSuites.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithTwoDatabaseTestSuites.xml");
         $databaseTestSuite = $this->Config->getConnectionParametersOfDatabaseTestSuite(1);
 
         $this->assertTrue(is_array($databaseTestSuite));
@@ -85,7 +85,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
 
         $this->assertArrayHasKey("port", $databaseTestSuite);
         $this->assertEquals("3306", $databaseTestSuite['port']);
-        
+
         $this->assertArrayHasKey("socket", $databaseTestSuite);
         $this->assertEquals("", $databaseTestSuite['socket']);
 
@@ -107,7 +107,7 @@ class GetConnectionParametersOfDatabaseTestSuiteTest extends \PHPUnit_Framework_
      */
     public function getConnectionParametersOfDatabaseTestSuiteXmlWithoutDatabaseTestSuite()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithTwoDatabaseTestSuites.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithTwoDatabaseTestSuites.xml");
         $this->Config->getConnectionParametersOfDatabaseTestSuite(2);
     }
 }

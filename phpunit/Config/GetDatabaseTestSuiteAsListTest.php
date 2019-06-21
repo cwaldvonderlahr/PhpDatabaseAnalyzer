@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Config;
 /**
  * Check test case.
  */
-class GetDatabaseTestSuiteAsListTest extends \PHPUnit_Framework_TestCase
+class GetDatabaseTestSuiteAsListTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -37,7 +37,7 @@ class GetDatabaseTestSuiteAsListTest extends \PHPUnit_Framework_TestCase
      */
     public function getDatabaseTestSuiteAsList()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/config.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
         $databaseTestSuiteList = $this->Config->getDatabaseTestSuiteAsList();
 
         $this->assertTrue(is_array($databaseTestSuiteList));
@@ -53,7 +53,7 @@ class GetDatabaseTestSuiteAsListTest extends \PHPUnit_Framework_TestCase
      */
     public function getDatabaseTestSuiteAsListWithTwoDatabaseTestSuites()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithTwoDatabaseTestSuites.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithTwoDatabaseTestSuites.xml");
         $databaseTestSuiteList = $this->Config->getDatabaseTestSuiteAsList();
 
         $this->assertTrue(is_array($databaseTestSuiteList));
@@ -74,7 +74,7 @@ class GetDatabaseTestSuiteAsListTest extends \PHPUnit_Framework_TestCase
      */
     public function getDatabaseTestSuiteAsListXmlWithoutDatabaseTestSuite()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithoutDatabaseTestSuite.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithoutDatabaseTestSuite.xml");
         $this->Config->getDatabaseTestSuiteAsList();
     }
 }

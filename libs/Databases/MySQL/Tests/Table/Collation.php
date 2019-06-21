@@ -11,109 +11,94 @@
  * @link      https://github.com/cwaldvonderlahr/PhpDatabaseAnalyzer
  * @version   0.1
  **/
-namespace PhpDatabaseAnalyzer\Databases\Mysql\Tests\Table;
+namespace PhpDatabaseAnalyzer\Databases\MySQL\Tests\Table;
 
 class Collation implements \PhpDatabaseAnalyzer\DatabaseTestInterface
 {
 
     protected $Database;
 
+    protected $Structure;
+
     protected $Logger;
 
     private $data;
 
-    public function __construct(\PhpDatabaseAnalyzer\Databases\Mysql\Connection $Database, \PhpDatabaseAnalyzer\Logger $Logger)
+    public function __construct(\PhpDatabaseAnalyzer\Databases\MySQL\Connection $Database, \PhpDatabaseAnalyzer\Databases\MySQL\Structure $Structure, \PhpDatabaseAnalyzer\Logger $Logger)
     {
         $this->Database = $Database;
+        $this->Structure = $Structure;
         $this->Logger = $Logger;
     }
 
     public function runTest()
     {
         $this->Logger->setInfo("Start " . __CLASS__);
-        
+
         $this->getData();
-        
+
         $this->checkData();
-        
+
         $this->Logger->setInfo("End " . __CLASS__);
-        
+
         return true;
     }
-    
+
     private function getData()
     {
-        $this->data['tables'] = $this->getAllTables();
-        
+        $this->data['tables'] = $this->Structure->getAllTables();
+
         $this->data['databaseCollation'] = $this->getSchemaDefaultCollation();
-        
     }
-    
+
     private function checkData()
     {
         foreach ($this->data['tables'] as $tableName) {
             $tableCollation = $this->getTableCollation($tableName);
-            
+
             // check difference
             if ($tableCollation !== $this->data['databaseCollation']) {
-                $this->Logger->setIssue("warning", "Table " . $tableName . " (".$tableCollation.") has not the default schema collation (".$this->data['databaseCollation'].")", 5);
+                $this->Logger->setIssue("warning", "Table " . $tableName . " (" . $tableCollation . ") has not the default schema collation (" . $this->data['databaseCollation'] . ")", 5);
             }
         }
     }
-    
+
     private function getSchemaDefaultCollation()
     {
-        $query = ("SELECT 
-                        default_collation_name 
-                   FROM 
+        $query = ("SELECT
+                        default_collation_name
+                   FROM
                         information_schema.SCHEMATA
-                   WHERE 
-                        schema_name = '".$this->Database->getDatabase()."';");
-        
+                   WHERE
+                        schema_name = '" . $this->Database->getDatabase() . "';");
+
         $result = $this->Database->getRow($query);
-        
+
         if (isset($result, $result[0]) === true) {
             return $result[0];
         }
-        
+
         return false;
-        
     }
-    
+
     private function getTableCollation($tableName)
     {
-        
-        $query = ("SELECT 
-                       b.collation_name 
-                   FROM 
+        $query = ("SELECT
+                       b.collation_name
+                   FROM
                        information_schema.`TABLES` as a,
                        information_schema.`COLLATION_CHARACTER_SET_APPLICABILITY` b
-                   WHERE 
+                   WHERE
                         b.collation_name = a.table_collation and
-                        a.table_schema = '".$this->Database->getDatabase()."' and
-                        a.table_name = '".$tableName."';");
-        
+                        a.table_schema = '" . $this->Database->getDatabase() . "' and
+                        a.table_name = '" . $tableName . "';");
+
         $result = $this->Database->getRow($query);
-        
+
         if (isset($result, $result[0])) {
             return $result[0];
         }
-        
+
         return false;
-    }
-    
-    private function getAllTables()
-    {
-        $query = ("Show Tables;");
-        
-        $result = $this->Database->getArray($query, 'num');
-        
-        foreach ($result as $numericKey => $arrayValues) {
-            if (isset($arrayValues[0])) {
-                $result[$numericKey] = (string) $arrayValues[0];
-            }
-        }
-        
-        return $result;
     }
 }

@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Config;
 /**
  * Check test case.
  */
-class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
+class GetOutputTypeTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -37,7 +37,7 @@ class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function getOutputType()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/config.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
         $outputType = $this->Config->getOutputType();
         $this->assertTrue(is_string($outputType));
         $this->assertEquals("XML", $outputType);
@@ -51,7 +51,7 @@ class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function getOutputTypeXmlWithoutOutputType()
     {
-        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__)."/../dataProvider/Config/configWithoutOutputType.xml");
+        $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/configWithoutOutputType.xml");
         $this->Config->getOutputType();
     }
 }

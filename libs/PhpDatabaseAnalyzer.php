@@ -28,7 +28,7 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
 
     public function start()
     {
-        $this->runDatabaseTestSuites();
+        return $this->runDatabaseTestSuites();
     }
 
     private function runDatabaseTestSuites()
@@ -41,6 +41,9 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
             $connectionData = $this->Config->getConnectionParametersOfDatabaseTestSuite($databaseTestSuiteId);
 
             $connectionClass = '\PhpDatabaseAnalyzer\Databases\\' . $connectionData['engine'] . '\Connection';
+            $structureClass =  '\PhpDatabaseAnalyzer\Databases\\' . $connectionData['engine'] . '\Structure';
+
+            $Logger->setInfo("Database: " . $connectionData['database']);
 
             if (! class_exists($connectionClass)) {
                 throw new \RuntimeException("Database connection class does not exists: " . $connectionClass, E_ERROR);
@@ -48,11 +51,13 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
                 $ConnectionObject = new $connectionClass();
                 $ConnectionObject->set($connectionData['host'], $connectionData['username'], $connectionData['password'], $connectionData['database'], $connectionData['port'], $connectionData['socket']);
 
+                $Structure = new $structureClass($ConnectionObject);
+
                 $testList = $this->getAllTestsOfDatabaseEngine($connectionData['engine']);
 
                 foreach ($testList as $testCLass) {
                     if (class_exists($testCLass)) {
-                        $testClass = new $testCLass($ConnectionObject, $Logger);
+                        $testClass = new $testCLass($ConnectionObject, $Structure, $Logger);
                         $testClass->runTest();
                         unset($testCLass);
                     }
@@ -60,7 +65,7 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
             }
         }
 
-        $this->createOutput($Logger);
+        return $this->createOutput($Logger);
     }
 
     private function getAllTestsOfDatabaseEngine($databaseEngine)
@@ -102,7 +107,7 @@ class PhpDatabaseAnalyzer implements PhpDatabaseAnalyzerInterface
             throw new \RuntimeException("Output class does not exists", E_ERROR);
         } else {
             $Output = new $outputClass();
-            $Output->create($Logger);
+            return $Output->create($Logger);
         }
     }
 }

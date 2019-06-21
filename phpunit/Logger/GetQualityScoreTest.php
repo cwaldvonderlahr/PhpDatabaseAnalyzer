@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Logger;
 /**
  * Check test case.
  */
-class GetQualityScoreTest extends \PHPUnit_Framework_TestCase
+class GetQualityScoreTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

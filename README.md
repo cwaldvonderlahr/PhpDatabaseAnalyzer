@@ -1,33 +1,31 @@
 # PhpDatabaseAnalyzer
 
-![Scrutinizer Score](https://scrutinizer-ci.com/g/cwaldvonderlahr/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
+Project is still in development. 
 
-Project is still in dev. 
+## current version
 
-## idea
-- simple
-- awesome
-- clean
-- fun
+- v.0.2 beta
 
-## facts
-- written in PHP7
-- helpful for database architects
-- ready for performance geeks
+## Scrutinizer Checks
+
+![Scrutinizer](https://scrutinizer-ci.com/g/CONFTEC/PhpDatabaseAnalyzer/badges/quality-score.png?b=master)
+
 
 ## supported databases
-- mySQL5
+- mySQL 5.5
 
 ## tests
-- Database Tests
-- Table Tests
-- Field Tests
+- Auto increment: check auto increment values compared with the max values
+- Charset: check database charset and collation compared with table charset and collation
+- Charset: check table charset and collation compared with column charset and collation
+- Keys: find tables without primary key
 
 ## output-Formats
 - XML
 - HTML
 
 ## code
+- PHP 5.6
 - PSR-0 Autoloader
 - PSR-1 Coding Standard
 - PSR-2 Codestyle
@@ -69,9 +67,9 @@ Replace "OUTPUT-FILE" with the name of the file in which the output should be sa
 Example: 
 "php phpDatabaseAnalyzer.php > result.xml"
 
-#####Windows
+## contact
 
-## future plan
+mail (at) phpdatabaseanalyzer.de
 
 work on 0.2
 

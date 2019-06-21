@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Logger;
 /**
  * Check test case.
  */
-class SetInfoTest extends \PHPUnit_Framework_TestCase
+class SetInfoTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -27,7 +27,7 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Logger = null;
-        
+
         parent::tearDown();
     }
 
@@ -39,14 +39,14 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     {
         $loggingMode = "full";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
-        
+
         $text = "Hello World";
         $this->assertTrue($this->Logger->setInfo($text));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(1, count($log));
-        
+
         $this->assertEquals($text, $log[0]['text']);
     }
 
@@ -58,12 +58,12 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     {
         $loggingMode = "issues";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
-        
+
         $text = "Hello World";
         $this->assertFalse($this->Logger->setInfo($text));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 
@@ -75,12 +75,12 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     {
         $loggingMode = "full";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
-        
+
         $text = "";
         $this->assertFalse($this->Logger->setInfo($text));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 
@@ -92,12 +92,12 @@ class SetInfoTest extends \PHPUnit_Framework_TestCase
     {
         $loggingMode = "full";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
-        
+
         $text = array();
         $this->assertFalse($this->Logger->setInfo($text));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 }

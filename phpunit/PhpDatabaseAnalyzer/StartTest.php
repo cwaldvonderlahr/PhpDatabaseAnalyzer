@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\PhpDatabaseAnalyzer;
 /**
  * Check test case.
  */
-class StartTest extends \PHPUnit_Framework_TestCase
+class StartTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

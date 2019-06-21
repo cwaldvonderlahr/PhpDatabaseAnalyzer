@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Config;
 /**
  * Check test case.
  */
-class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
+class GetOutputTypeTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -27,7 +27,7 @@ class GetOutputTypeTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Config = null;
-        
+
         parent::tearDown();
     }
 

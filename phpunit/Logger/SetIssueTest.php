@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Logger;
 /**
  * Check test case.
  */
-class SetIssueTest extends \PHPUnit_Framework_TestCase
+class SetIssueTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -19,7 +19,7 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        
+
         $loggingMode = "full";
         $this->Logger = new \PhpDatabaseAnalyzer\Logger($loggingMode);
     }
@@ -30,7 +30,7 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Logger = null;
-        
+
         parent::tearDown();
     }
 
@@ -44,9 +44,9 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "Hallo Welt";
         $scorePoints = 1;
         $this->assertFalse($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 
@@ -60,9 +60,9 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "";
         $scorePoints = 1;
         $this->assertFalse($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 
@@ -76,9 +76,9 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "Hallo Welt";
         $scorePoints = 'aa';
         $this->assertFalse($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 
@@ -92,9 +92,9 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "Hallo Welt";
         $scorePoints = - 1;
         $this->assertFalse($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(0, count($log));
     }
 
@@ -108,11 +108,11 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "Hallo Welt";
         $scorePoints = 2;
         $this->assertTrue($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(1, count($log));
-        
+
         $this->assertEquals("issue", $log[0]['logType']);
         $this->assertEquals(2, $log[0]['scorePoints']);
         $this->assertEquals("notice", $log[0]['issueType']);
@@ -128,11 +128,11 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "Hallo Welt";
         $scorePoints = 9;
         $this->assertTrue($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(1, count($log));
-        
+
         $this->assertEquals("issue", $log[0]['logType']);
         $this->assertEquals(9, $log[0]['scorePoints']);
         $this->assertEquals("warning", $log[0]['issueType']);
@@ -148,11 +148,11 @@ class SetIssueTest extends \PHPUnit_Framework_TestCase
         $text = "Hallo Welt";
         $scorePoints = 7;
         $this->assertTrue($this->Logger->setIssue($type, $text, $scorePoints));
-        
+
         $log = $this->Logger->getLog();
-        
+
         $this->assertEquals(1, count($log));
-        
+
         $this->assertEquals("issue", $log[0]['logType']);
         $this->assertEquals(7, $log[0]['scorePoints']);
         $this->assertEquals("critical", $log[0]['issueType']);

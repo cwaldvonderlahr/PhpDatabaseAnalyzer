@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Config;
 /**
  * Check test case.
  */
-class ConstructorTest extends \PHPUnit_Framework_TestCase
+class ConstructorTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -27,7 +27,7 @@ class ConstructorTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->Config = null;
-        
+
         parent::tearDown();
     }
 
@@ -71,7 +71,7 @@ class ConstructorTest extends \PHPUnit_Framework_TestCase
     public function constructorValidConfigFileName()
     {
         $this->Config = new \PhpDatabaseAnalyzer\Config(dirname(__FILE__) . "/../dataProvider/Config/config.xml");
-        
+
         $this->assertTrue(is_object($this->Config));
     }
 }

@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Databases\MySQL\Structure;
 /**
  * Check test case.
  */
-class GetAllTablesTest extends \PHPUnit_Framework_TestCase
+class GetAllTablesTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

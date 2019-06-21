@@ -1,11 +1,11 @@
 {
   "name" : "PhpDatabaseAnalyzer",
-  "version" : "0.2",
+  "version" : "0.3",
   "require" : {
     "php" : ">=5.5"
   },
   "require-dev" : {
-    "phpunit/phpunit" : "5.5.*"
+    "phpunit/phpunit" : "7.*"
   },
   "autoload" : {
     "psr-4" : {

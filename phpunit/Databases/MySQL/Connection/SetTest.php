@@ -4,7 +4,7 @@ namespace PHPUnit\PhpDatabaseAnalyzer\Databases\MySQL\Connection;
 /**
  * Check test case.
  */
-class SetTest extends \PHPUnit_Framework_TestCase
+class SetTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
